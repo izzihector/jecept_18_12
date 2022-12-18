@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="action_product_move_by_client_report" model="ir.actions.report">
+            <field name="name">Product Move By Client</field>
+            <field name="model">product.move.by.client.wizard</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">product_move_by_client.product_move_by_client_report</field>
+            <field name="report_file">product_move_by_client.product_move_by_client_report</field>
+            <!--<field name="print_report_name">(object.name_of_hotel)</field>-->
+            <field name="binding_model_id" ref="model_product_move_by_client_wizard"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <template id="product_move_by_client_report">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout" style="background:unset">
+                    <div class="page">
+                        <style>
+                            .page .header-table td{
+                            border:none !important;
+                            }
+                            .page > table tr td:last-child{
+                            background:unset !important;
+                            }
+                        </style>
+
+                        <h4 style="text-align:center">Product Move By Client Report</h4>
+
+                        <div style="width:100%; border: 1px solid black; padding:1%;">
+                            <table style="width:100%; border:none;" class="header-table" cellspacing="0"
+                                   cellpadding="0">
+                                <tr>
+                                    <td style="border-right: none;">
+                                        <b>Date:</b>
+                                    </td>
+                                    <td>
+                                        <span t-esc="datetime.datetime.now().strftime('%d/%m/%Y')"></span>
+                                    </td>
+                                    <td style="border-right: none;">
+                                        <b>Time:</b>
+                                    </td>
+                                    <td>
+                                        <span t-esc="(context_timestamp(datetime.datetime.now())+datetime.timedelta(hours=1)).strftime('%H:%M')"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <b style="margin-right: 10px;">From date:</b>
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <span t-esc="from_date"/>
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <b style="margin-right: 10px;">To Date:</b>
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <span t-esc="to_date"/>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                     <td style="text-align: left;">
+                                        <b style="margin-right: 10px;">Customer Name:</b>
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <span t-esc="client"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <br/>
+                        <br/>
+
+                        <table style="width:100%">
+                            <thead>
+                                <tr style="background-color: silver; border: 1px solid;">
+                                    <td style="border: 1px black solid; text-align:center;">
+                                        Total With Tax
+                                    </td>
+
+                                    <td style="border: 1px black solid; text-align:center;">
+                                        Total Without Tax
+                                    </td>
+
+                                    <td style="border: 1px black solid; text-align:center;">
+                                        Quantity
+                                    </td>
+
+                                    <td style="border: 1px black solid; text-align:center;">
+                                        Product Name
+                                    </td>
+
+                                    <td style="border: 1px black solid; text-align:center;">
+                                        Product Internal Reference
+                                    </td>
+
+                                    <td style="display:none;">
+                                    </td>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+
+                                <t t-foreach="lines.keys()" t-as="k">
+                                    <tr>
+
+                                        <td style="border: 1px solid; padding:5px; text-align:center;">
+
+                                            <span t-esc="lines[k]['amount_tax']"/>
+                                        </td>
+
+                                        <td style="border: 1px solid; padding:5px; text-align:center;">
+
+                                            <span t-esc="lines[k]['amount']"/>
+                                        </td>
+
+                                        <td style="border: 1px solid; padding:5px; text-align:center;">
+
+                                            <span t-esc="lines[k]['qty']"/>
+                                        </td>
+
+                                        <td style="border: 1px solid; padding:5px; text-align:center;">
+
+                                            <span t-esc="lines[k]['name']"/>
+                                        </td>
+
+                                        <td style="border: 1px solid; padding:5px; text-align:center;">
+
+                                            <span t-esc="lines[k]['code']"/>
+                                        </td>
+
+                                        <td style="display:none;">
+                                        </td>
+                                    </tr>
+
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

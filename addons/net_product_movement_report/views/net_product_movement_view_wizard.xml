@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="form_net_product_movement_wizard">
+            <field name="name">Net Product Movement</field>
+            <field name="model">net.product.movement.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Wizard">
+                    <group>
+                        <field name="product_id"/>
+                        <field name="location_id"/>
+                        <field name="from_date"/>
+                        <field name="to_date"/>
+                    </group>
+                    <footer>
+                        <button type="object" name="print_report" string="Print" class="btn btn-primary"/>
+                        <button type="object" special="cancel" string="Cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_net_product_movement" model="ir.actions.act_window">
+            <field name="name">Net Product Movement Wizard</field>
+            <field name="res_model">net.product.movement.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="form_net_product_movement_wizard"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_net_product_movement" parent="stock.menu_warehouse_report"
+                  name="Net Product Movement"
+                  action="action_net_product_movement" sequence="152"/>
+
+    </data>
+</odoo>

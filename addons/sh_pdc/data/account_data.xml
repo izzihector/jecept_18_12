@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!--  Sequence for PDC Payment -->
+    <record id="sequence_cust_pdc_payment_seq" model="ir.sequence">
+        <field name="name">PDC Customer Payment sequence</field>
+        <field name="code">pdc.payment.customer</field>
+        <field name="prefix">CUST.IN/PDC/</field>
+        <field eval="1" name="number_next" />
+        <field eval="3" name="padding" />
+        <field eval="1" name="number_increment" />
+        <field eval="False" name="company_id" />
+    </record>
+    <record id="sequence_supp_pdc_payment_seq" model="ir.sequence">
+        <field name="name">PDC Vendor Payment sequence</field>
+        <field name="code">pdc.payment.vendor</field>
+        <field name="prefix">SUPP.OUT/PDC/</field>
+        <field eval="1" name="number_next" />
+        <field eval="3" name="padding" />
+        <field eval="1" name="number_increment" />
+        <field eval="False" name="company_id" />
+    </record>
+<!--
+    <record id="pdc_vendor_account" model="account.account">
+        <field name="name">PDC Payable</field>
+        <field name="code">100012</field>
+        <field name="user_type_id" ref="account.data_account_type_payable" />
+        <field name="reconcile" eval="True" />
+    </record>
+    <record id="pdc_cust_account" model="account.account">
+        <field name="name">PDC Receivable</field>
+        <field name="code">100011</field>
+        <field name="user_type_id" ref="account.data_account_type_receivable" />
+        <field name="reconcile" eval="True" />
+    </record>
+-->
+</odoo>

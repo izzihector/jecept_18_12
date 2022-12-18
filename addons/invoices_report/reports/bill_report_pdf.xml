@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="grouped_bill_report_pdf">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <style>
+                        tr { border:1px solid grey; height:30px; page-break-inside:avoid; }
+                        td, th { border:1px solid grey; vertical-align:middle; text-align:center; font-size:10px; }
+                        th { font-size:13px; }
+                        * { font-family: 'Noto Naskh Arabic', sans-serif; }
+                    </style>
+
+                    <center>
+                        <h4>تقرير فواتير المشتريات حسب جميع أنواع الزبائن</h4>
+                        <h6>
+                            <b>من: </b>
+                            <t t-if="date_from"><span t-esc="date_from" class="mr-1 ml-2"/></t>
+                            <t t-else=""><span class="mr-4 ml-4">-</span></t>
+                            <b> إلى: </b>
+                            <t t-if="date_to"><span t-esc="date_to" class="mr-1"/></t>
+                            <t t-else=""><span class="mr-4 ml-4">-</span></t>
+                        </h6>
+                    </center>
+
+                    <div class="page" dir="rtl">
+                        <t t-if="target in ['in_invoice', 'both']">
+                            <table style="width:100%; border-spacing:0;">
+                                <tr style="background:#e0e0fc">
+                                    <td colspan="99" class="text-center">
+                                        <strong style="font-size:14px;">فواتيـــر المشتريـــات</strong>
+                                    </td>
+                                </tr>
+                                <tr style="background:#e0e0fc">
+                                    <th style="">#</th>
+                                    <th style="">رقـم الفاتـورة</th>
+                                    <th style="">تاريـخ الفاتـورة</th>
+                                    <th style="">العميــــل</th>
+                                    <th style="">المنطقــة</th>
+                                    <th style="">طريقـة الدفـع</th>
+                                    <th style="">صافـى الفاتـورة</th>
+                                    <th style="">الخصــم</th>
+                                    <th style="">الضريبــة</th>
+                                    <th style="">إجمالـي الفاتـورة</th>
+
+<!--                                    <th style="width:2%">#</th>-->
+<!--                                    <th style="width:6%">رقـم الفاتـورة</th>-->
+<!--                                    <th style="width:8%">تاريـخ الفاتـورة</th>-->
+<!--                                    <th style="width:12%">العميــــل</th>-->
+<!--                                    <th style="width:8%">المنطقــة</th>-->
+<!--                                    <th style="width:8%">طريقـة الدفـع</th>-->
+<!--                                    <th style="width:8%">صافـى الفاتـورة</th>-->
+<!--                                    <th style="width:8%">الخصــم</th>-->
+<!--                                    <th style="width:8%">الضريبــة</th>-->
+<!--                                    <th style="width:8%">إجمالـي الفاتـورة</th>-->
+
+                                    <!--                                    <th style="width:8%">التكلفـة</th>-->
+                                    <!--                                    <th style="width:8%">الربــح</th>-->
+                                    <!--                                    <th style="width:8%">نسبة هامش الربح %</th>-->
+                                </tr>
+                                <t t-foreach="bills" t-as="inv">
+                                    <tr>
+                                        <td><span t-esc="inv_index+1"/></td>
+                                        <td><span t-esc="inv['name']"/></td>
+                                        <td><span t-esc="inv['date']"/></td>
+                                        <td><span t-esc="inv['partner']"/></td>
+                                        <td><span t-esc="inv['state_name']"/></td>
+                                        <td><span t-esc="inv['payment_term']"/></td>
+                                        <td dir="ltr"><span t-esc="'%.3f' % inv['amount_untaxed']"/></td>
+                                        <td dir="ltr"><span t-esc="'%.3f' % inv['discount']"/></td>
+                                        <td dir="ltr"><span t-esc="'%.3f' % inv['amount_tax']"/></td>
+                                        <td dir="ltr"><span t-esc="'%.3f' % inv['amount_total']"/></td>
+<!--                                        <td dir="ltr"><span t-esc="'%.3f' % inv['cost']"/></td>-->
+<!--                                        <td dir="ltr"><span t-esc="'%.3f' % inv['profit']"/></td>-->
+<!--                                        <td dir="ltr"><span t-esc="'%.2f' % inv['percent']"/></td>-->
+                                    </tr>
+                                </t>
+                                <t t-if="target == 'in_invoice'">
+                                    <tr style="background: rgba(200, 255, 200, 0.5);">
+                                        <td colspan="6"><strong>إجماليات فواتير المشتريات</strong></td>
+                                        <td dir="ltr"><strong t-esc="'%.3f' % bills_totals['sum_amt_untaxed']"/></td>
+                                        <td dir="ltr"><strong t-esc="'%.3f' % bills_totals['sum_amt_discount']"/></td>
+                                        <td dir="ltr"><strong t-esc="'%.3f' % bills_totals['sum_amt_tax']"/></td>
+                                        <td dir="ltr"><strong t-esc="'%.3f' % bills_totals['sum_amt_total']"/></td>
+<!--                                        <td dir="ltr"><strong t-esc="'%.3f' % bills_totals['sum_amt_cost']"/></td>-->
+<!--                                        <td dir="ltr"><strong t-esc="'%.3f' % bills_totals['sum_amt_profit']"/></td>-->
+<!--                                        <td><strong>-</strong></td>-->
+                                    </tr>
+                                </t>
+                            </table>
+                        </t>
+                        <br/>
+                        <t t-if="target in ['in_refund', 'both']">
+                            <table style="width:100%; border-spacing:0;">
+                                <tr style="background:#e0e0fc">
+                                    <td colspan="99" class="text-center">
+                                        <strong style="font-size:14px;">مـردودات المشتريـــات</strong>
+                                    </td>
+                                </tr>
+                                <tr style="background:#e0e0fc">
+                                    <th style="width:2%">#</th>
+                                    <th style="width:6%">رقـم الفاتـورة</th>
+                                    <th style="width:8%">تاريـخ الفاتـورة</th>
+                                    <th style="width:12%">العميــــل</th>
+                                    <th style="width:8%">المنطقــة</th>
+                                    <th style="width:8%">طريقـة الدفـع</th>
+                                    <th style="width:8%">صافـى الفاتـورة</th>
+                                    <th style="width:8%">الخصــم</th>
+                                    <th style="width:8%">الضريبــة</th>
+                                    <th style="width:8%">إجمالـي الفاتـورة</th>
+<!--                                    <th style="width:8%">التكلفـة</th>-->
+<!--                                    <th style="width:8%">الربــح</th>-->
+<!--                                    <th style="width:8%">نسبة هامش الربح %</th>-->
+                                </tr>
+                                <t t-foreach="refunds" t-as="inv">
+                                    <tr>
+                                        <td><span t-esc="inv_index+1"/></td>
+                                        <td><span t-esc="inv['name']"/></td>
+                                        <td><span t-esc="inv['date']"/></td>
+                                        <td><span t-esc="inv['partner']"/></td>
+                                        <td><span t-esc="inv['state_name']"/></td>
+                                        <td><span t-esc="inv['payment_term']"/></td>
+                                        <td dir="ltr"><span t-esc="'%.3f' % inv['amount_untaxed']"/></td>
+                                        <td dir="ltr"><span t-esc="'%.3f' % inv['discount']"/></td>
+                                        <td dir="ltr"><span t-esc="'%.3f' % inv['amount_tax']"/></td>
+                                        <td dir="ltr"><span t-esc="'%.3f' % inv['amount_total']"/></td>
+<!--                                        <td dir="ltr"><span t-esc="'%.3f' % inv['cost']"/></td>-->
+<!--                                        <td dir="ltr"><span t-esc="'%.3f' % inv['profit']"/></td>-->
+<!--                                        <td dir="ltr"><span t-esc="'%.2f' % inv['percent']"/></td>-->
+                                    </tr>
+                                </t>
+
+                                <t t-if="target == 'in_refund'">
+                                    <tr style="background: rgba(255, 200, 200, 0.5);">
+                                        <td colspan="6"><strong>إجماليات مردودات المشتريات</strong></td>
+                                        <td dir="ltr"><strong t-esc="'%.3f' % refunds_totals['sum_amt_untaxed']"/></td>
+                                        <td dir="ltr"><strong t-esc="'%.3f' % refunds_totals['sum_amt_discount']"/></td>
+                                        <td dir="ltr"><strong t-esc="'%.3f' % refunds_totals['sum_amt_tax']"/></td>
+                                        <td dir="ltr"><strong t-esc="'%.3f' % refunds_totals['sum_amt_total']"/></td>
+<!--                                        <td dir="ltr"><strong t-esc="'%.3f' % refunds_totals['sum_amt_cost']"/></td>-->
+<!--                                        <td dir="ltr"><strong t-esc="'%.3f' % refunds_totals['sum_amt_profit']"/></td>-->
+<!--                                        <td><strong>-</strong></td>-->
+                                    </tr>
+                                </t>
+                            </table>
+                        </t>
+
+                        <br/>
+
+                        <t t-if="target == 'both'">
+                            <table style="width:100%; border-spacing:0;">
+                                <tr style="background:#e0e0fc">
+                                    <th>الإجمالــــيات</th>
+                                    <th>صافـى الفاتـورة</th>
+                                    <th>الخصــم</th>
+                                    <th>الضريبــة</th>
+                                    <th>إجمالـي الفاتـورة</th>
+<!--                                    <th>التكلفـة</th>-->
+<!--                                    <th>الربــح</th>-->
+                                </tr>
+                                <tr style="background: rgba(200, 255, 200, 0.5);">
+                                    <td dir="ltr"><strong>إجماليات فواتير المشتريات</strong></td>
+                                    <td dir="ltr"><strong t-esc="'%.3f' % bills_totals['sum_amt_untaxed']"/></td>
+                                    <td dir="ltr"><strong t-esc="'%.3f' % bills_totals['sum_amt_discount']"/></td>
+                                    <td dir="ltr"><strong t-esc="'%.3f' % bills_totals['sum_amt_tax']"/></td>
+                                    <td dir="ltr"><strong t-esc="'%.3f' % bills_totals['sum_amt_total']"/></td>
+<!--                                    <td dir="ltr"><strong t-esc="'%.3f' % bills_totals['sum_amt_cost']"/></td>-->
+<!--                                    <td dir="ltr"><strong t-esc="'%.3f' % bills_totals['sum_amt_profit']"/></td>-->
+                                </tr>
+                                <tr style="background: rgba(255, 200, 200, 0.5);">
+                                    <td dir="ltr"><strong>إجماليات مردودات المشتريات</strong></td>
+                                    <td dir="ltr"><strong t-esc="'%.3f' % refunds_totals['sum_amt_untaxed']"/></td>
+                                    <td dir="ltr"><strong t-esc="'%.3f' % refunds_totals['sum_amt_discount']"/></td>
+                                    <td dir="ltr"><strong t-esc="'%.3f' % refunds_totals['sum_amt_tax']"/></td>
+                                    <td dir="ltr"><strong t-esc="'%.3f' % refunds_totals['sum_amt_total']"/></td>
+<!--                                    <td dir="ltr"><strong t-esc="'%.3f' % refunds_totals['sum_amt_cost']"/></td>-->
+<!--                                    <td dir="ltr"><strong t-esc="'%.3f' % refunds_totals['sum_amt_profit']"/></td>-->
+                                </tr>
+                                <tr style="background: #e0e0fc;">
+                                    <td><strong>الصافــــي</strong></td>
+                                    <td dir="ltr"><strong t-esc="'%.3f' % (bills_totals['sum_amt_untaxed'] + refunds_totals['sum_amt_untaxed'])"/></td>
+                                    <td dir="ltr"><strong t-esc="'%.3f' % (bills_totals['sum_amt_discount'] + refunds_totals['sum_amt_discount'])"/></td>
+                                    <td dir="ltr"><strong t-esc="'%.3f' % (bills_totals['sum_amt_tax'] + refunds_totals['sum_amt_tax'])"/></td>
+                                    <td dir="ltr"><strong t-esc="'%.3f' % (bills_totals['sum_amt_total'] + refunds_totals['sum_amt_total'])"/></td>
+<!--                                    <td dir="ltr"><strong t-esc="'%.3f' % (bills_totals['sum_amt_cost'] + refunds_totals['sum_amt_cost'])"/></td>-->
+<!--                                    <td dir="ltr"><strong t-esc="'%.3f' % (bills_totals['sum_amt_profit'] + refunds_totals['sum_amt_profit'])"/></td>-->
+                                </tr>
+                            </table>
+                        </t>
+
+                    </div>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

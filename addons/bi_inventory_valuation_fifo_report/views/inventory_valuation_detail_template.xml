@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="inv_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+
+                <t t-if="not data['display_sum']">
+                    <center>
+                        <h2 style="color: #3398db;font-size:20;"><u><b>Inventory Valuation Report</b></u></h2>
+                        <br/>
+                        <br/>
+                        <br/><br/>
+
+                        <table style="border: 1px solid black;" width="100%" class="text-center">
+                            <tr style = "background-color: #D3D3D3;">
+                                <th style="border: 1px solid black;" class="text-center">Company</th>
+                                <th style="border: 1px solid black;" class="text-center">Warehouse</th>
+                                <th style="border: 1px solid black;" class="text-center">Valuation Date</th>
+                                <th style="border: 1px solid black;" class="text-center">Amount in currency</th>
+                            </tr>
+                            <tr>
+                                <th style="border: 1px solid black;" class="text-center"><span t-esc="data['company_id']"/></th>
+                                <th style="border: 1px solid black;" class="text-center"><span t-esc="get_warehouse(data['warehouse'])"/></th>
+                                <th style="border: 1px solid black;" class="text-center"><span t-esc="data['start_date']"/> To <span t-esc="data['end_date']"/> </th>
+                                <th style="border: 1px solid black;" class="text-center"><span t-esc="data['currency']"/></th>
+                            </tr>
+                        </table>
+                        <br/>
+
+                        <t t-set="total_value_stock" t-value="0"/>
+                        <table style="border: 1px solid black;" width="100%" class="text-center" >
+
+                            <t  t-foreach="get_lines(data)" t-as="line">
+                                <tr >
+                                    <td style="border: 1px solid black;background-color: #D3D3D3;" class="text-center"><b><span t-esc="line"/></b></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <t t-set="value_stock" t-value="0"/>
+                                        <table width='100%'>
+                                            <tr>
+                                                <th style="border-right: 1px solid black;"  class="text-center">Default Code</th>
+                                                <th style="border-right: 1px solid black;"  class="text-center">Date</th>
+                                                <th style="border-right: 1px solid black;"  class="text-center">Ref</th>
+                                                <th style="border-right: 1px solid black;"  class="text-center">Type</th>
+                                                <th style="border-right: 1px solid black;"  class="text-center">Category</th>
+                                                <th style="border-right: 1px solid black;"  class="text-center">Cost Price</th>
+
+                                                <!-- <th style="border-right: 1px solid black;"  class="text-center">Internal</th> -->
+                                                <th style="border-right: 1px solid black;"  class="text-center">Received</th>
+                                                <th style="border-right: 1px solid black;"  class="text-center">Sales</th>
+                                                <th style="border-right: 1px solid black;"  class="text-center">Internal</th>
+                                                <th style="border-right: 1px solid black;"  class="text-center">Adjustment</th>
+                                                <!-- <th style="border-bottom: 1px solid black;" class="text-center">Ending</th> -->
+                                                <th style="border-right: 1px solid black;"  class="text-center">Available</th>
+                                                <th  class="text-center">Value</th>
+                                            </tr>
+
+                                            <tr t-foreach="get_lines(data).get(line)" t-as="val">
+                                                <td style="border: 1px solid black;"  class="text-center"><span t-esc="get_lines(data).get(line).get(val).get('sku')"/></td>
+
+                                                <td style="border: 1px solid black;"  class="text-center"><span t-esc="get_lines(data).get(line).get(val).get('date')"/></td>
+                                                <td style="border: 1px solid black;"  class="text-center"><span t-esc="val"/></td>
+
+                                                <td style="border: 1px solid black;"  class="text-center"><span t-esc="get_lines(data).get(line).get(val).get('type')"/></td>
+
+                                                <td style="border: 1px solid black;"  class="text-center"><span t-esc="get_lines(data).get(line).get(val).get('category')"/></td>
+
+
+                                                <td  style="border: 1px solid black;"  class="text-center"><span t-esc="get_lines(data).get(line).get(val).get('cost_price')"/></td>
+
+
+
+
+
+                                                <td style="border: 1px solid black;"  class="text-center"><span t-esc="get_lines(data).get(line).get(val).get('incoming')"/></td>
+
+
+                                                <td style="border: 1px solid black;"  class="text-center"><span t-esc="get_lines(data).get(line).get(val).get('outgoing')"/></td>
+
+                                                <td style="border: 1px solid black;"  class="text-center"><span t-esc="get_lines(data).get(line).get(val).get('internal')"/></td>
+
+
+                                                <td style="border: 1px solid black;"  class="text-center"><span t-esc="get_lines(data).get(line).get(val).get('adjust')"/></td>
+
+                                                <td style="border: 1px solid black;"  class="text-center"><span t-esc="get_lines(data).get(line).get(val).get('qty_date')"/></td>
+
+                                                <td style="border: 1px solid black;"  class="text-center"><span t-esc="get_lines(data).get(line).get(val).get('total_value')"/></td>
+
+                                                <t t-set="value_stock" t-value="value_stock + get_lines(data).get(line).get(val).get('total_value')"/>
+
+                                            </tr>
+
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td class="text-center"><b>Valuation : </b></td>
+                                                <td class="text-center"><b><span t-esc="value_stock"/></b></td>
+                                                <t t-set="total_value_stock" t-value="total_value_stock +value_stock"/>
+
+                                            </tr>
+
+                                        </table>
+                                    </td>
+                                </tr>
+                            </t>
+
+
+                        </table>
+
+                        <br/>
+                        <br/>
+
+                        <h4 class="pull-right">
+                            <span class="border-black o_subtotal" style="font-size:10;"><b>Total Valuation : </b></span>
+
+                            <span style="font-size:10;"><b><span t-esc="total_value_stock"/></b></span>
+                        </h4>
+
+                    </center>
+                </t>
+                <t t-if="data['display_sum']">
+                    <t t-set="total_value_stock" t-value="0"/>
+                    <center>
+                        <h2 style="color: #3398db;font-size:20;"><u><b>Inventory Valuation Report</b></u></h2>
+                        <br/>
+                        <br/>
+                        <br/><br/>
+                        <table style="border: 1px solid black;" width="100%" class="text-center">
+                            <tr style = "background-color: #D3D3D3;">
+                                <th style="border: 1px solid black;" class="text-center">Company</th>
+                                <th style="border: 1px solid black;" class="text-center">Warehouse</th>
+                                <th style="border: 1px solid black;" class="text-center">Valuation Date</th>
+                                <th style="border: 1px solid black;" class="text-center">Amount in currency</th>
+                            </tr>
+                            <tr>
+                                <th style="border: 1px solid black;" class="text-center"><span t-esc="data['company_id']"/></th>
+                                <th style="border: 1px solid black;" class="text-center"><span t-esc="get_warehouse(data['warehouse'])"/></th>
+                                <th style="border: 1px solid black;" class="text-center"><span t-esc="data['start_date']"/> To <span t-esc="data['end_date']"/> </th>
+                                <th style="border: 1px solid black;" class="text-center"><span t-esc="data['currency']"/></th>
+                            </tr>
+                        </table>
+                        <br/>
+
+                        <table width='100%'>
+                            <tr style = "background-color: #D3D3D3;">
+                                <th style="border: 1px solid black;" class="text-center">Category</th>
+
+                                <th style="border: 1px solid black;" class="text-center">Received</th>
+                                <th style="border: 1px solid black;" class="text-center">Sales</th>
+                                <th style="border: 1px solid black;" class="text-center">Internal</th>
+                                <th style="border: 1px solid black;" class="text-center">Adjustment</th>
+
+                                <th style="border: 1px solid black;" class="text-center">Valuation</th>
+                            </tr>
+                            <tr t-foreach="get_data(data)" t-as="line">
+                                <td style="border-bottom: 2px solid black; border-top:2px solid black; border-left:2px solid black; border-right:2px solid black;" class="text-center"><span t-esc="line"/></td>
+                                <td style="border-bottom: 2px solid black; border-top:2px solid black; border-left:2px solid black; border-right:2px solid black;" class="text-center"><span t-esc="get_data(data).get(line).get('incoming')"/></td>
+                                <td style="border-bottom: 2px solid black; border-top:2px solid black; border-left:2px solid black; border-right:2px solid black;" class="text-center"><span t-esc="get_data(data).get(line).get('outgoing')"/></td>
+                                <td style="border-bottom: 2px solid black; border-top:2px solid black; border-left:2px solid black; border-right:2px solid black;" class="text-center"><span t-esc="get_data(data).get(line).get('internal')"/></td>
+                                <td style="border-bottom: 2px solid black; border-top:2px solid black; border-left:2px solid black; border-right:2px solid black;" class="text-center"><span t-esc="get_data(data).get(line).get('adjust')"/></td>
+                                <td style="border-bottom: 2px solid black; border-top:2px solid black; border-left:2px solid black; border-right:2px solid black;" class="text-center"><span t-esc="get_data(data).get(line).get('total_value')"/></td>
+
+                                <t t-set="total_value_stock" t-value="total_value_stock +get_data(data).get(line).get('total_value')"/>
+
+
+                            </tr>
+
+                        </table>
+                        <br/>
+                        <br/>
+                        <h4 class="pull-right">
+                            <span class="border-black o_subtotal" style="font-size:10;"><b>Total Valuation : </b></span>
+
+                            <span style="font-size:10;"><b><span t-esc="total_value_stock"/></b></span>
+                        </h4>
+
+                    </center>
+                </t>
+
+            </t>
+        </t>
+    </template>
+
+</odoo>

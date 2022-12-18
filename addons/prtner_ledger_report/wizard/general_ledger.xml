@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data noupdate="1">
+       <record model="ir.ui.view" id="general_ledger_wizard">
+              <field name="name">Partner Ledger Report</field>
+              <field name="model">general.ledger.wizard</field>
+              <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <div class="oe_title">
+                           <h1>
+                                <field name="partner_id"/>
+                           </h1>
+                           </div>
+                        </group>
+                           <group colspan="4" col="4">
+                                <field name="date_from"/>
+                                <field name="date_to"/>
+                           </group>
+                                                
+                        <footer>
+                            <button name="print_report" type="object" string="Print Partner Ledger" icon="fa-print" class="oe_highlight" default_focus="1"/>
+                            <button string="Cancel" special="cancel" icon="fa-times-circle"/>
+                        </footer>                        
+                    </sheet>
+                </form>
+             </field>
+        </record>
+
+    <record model="ir.actions.act_window" id="action_general_ledger_wizard">
+      <field name="name"> General Ledger Report</field>
+      <field name="res_model">general.ledger.wizard</field>
+      <field name="view_id" ref="general_ledger_wizard"/>
+      <field name="binding_view_types">form</field>
+      <field name="view_mode">form</field>
+      <field name="target">new</field>
+    </record>
+
+    <menuitem 
+    id="partne_ledger_report_menu" 
+    name="Partner Ledger Report" 
+    parent="account.menu_finance_reports" 
+    action="action_general_ledger_wizard"/>
+
+    </data>
+</odoo>

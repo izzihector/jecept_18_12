@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_cash_van_users,cash.van.users,model_cash_van_users,,1,1,1,1
+access_res_partner_api,res.partner.api,model_res_partner,,1,1,1,1
+access_product_template_api,product.template.api,product.model_product_template,,1,1,1,1
+access_product_product_api,product.product.api,product.model_product_product,,1,1,1,1

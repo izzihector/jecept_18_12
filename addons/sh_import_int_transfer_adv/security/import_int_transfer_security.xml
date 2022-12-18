@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="sh_import_int_transfer_adv_group" model="res.groups">
+            <field name="name">Import Internal Transfer Advance</field>
+            <field name="users" eval="[Command.link(ref('base.user_root')), Command.link(ref('base.user_admin'))]"/>
+        </record>
+    </data>
+</odoo>

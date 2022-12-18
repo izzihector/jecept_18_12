@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="res_partner_view_form_inh" model="ir.ui.view">
+            <field name="name">res.partner.view.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='vat']" position="before">
+                    <field name="maps_location"/>
+                    <button type="object" name="open_location"
+                        icon="fa-map" 
+                        attrs="{'invisible': [('maps_location','=',False)]}">
+                        Location
+                    </button>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="res_company_view_form_inh" model="ir.ui.view">
+            <field name="name">res.company.view.form.inherit</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='currency_id']" position="after">
+                    <field name="is_cash_van"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

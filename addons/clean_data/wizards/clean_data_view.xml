@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="clean_data_form_view" model="ir.ui.view">
+        <field name="name">clean.data.wizrd</field>
+        <field name="model">clean.data</field>
+        <field name="arch" type="xml">
+            <form string="Clean Data">
+                <group>
+                    <group string="All Data" colspan="4">
+                        <field name="all_data" />
+                    </group>
+                    <group string="Sales &amp; Purchase" name="sale_purchase" attrs="{}">
+                        <field name="so_do" />
+                        <field name="po" />
+                        <field name="all_trans" />
+                    </group>
+                    <group string="Projects" name="project" attrs="{}">
+                        <field name="project" />
+                        <field name="project_task" />
+                        <field name="timesheet" />
+                    </group>
+                    <group string="Accounting" name="accounting" attrs="{}">
+                        <field name="inv_pymt" />
+                        <field name="journals" />
+                        <field name="cus_ven"  />
+                        <div attrs="{'invisible': [('cus_ven', '=', False)]}">To delete Customers/Vendors they must not be linked to any other tables. You need to first delete
+                            the data in the tables where customers are linked.</div>
+                        <field name="coa" />
+                    </group>
+                    <group string="Manufacturing" name="manufacturing" attrs="{}">
+                        <field name="mrp" />
+                        <field name="bom_mrp" />
+                    </group>
+                </group>
+                <footer>
+                    <button name="clean_data" string="Clean Data" type="object" class="btn-primary" />
+                    <button string="cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="clean_data_action_wizard" model="ir.actions.act_window">
+        <field name="name">Clean Data</field>
+        <field name="res_model">clean.data</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    <menuitem id="clean_data_menu" name="Clean Data" parent="base.menu_administration" sequence="2" groups="base.group_no_one" />
+    <menuitem id="clean_data_sub_menu" parent="clean_data_menu" action="clean_data_action_wizard" name="Clean Data" sequence="0" />
+</odoo>

@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <record id="view_sale_book_day_excel_fifo" model="ir.ui.view">
+            <field name="name">view.sale.book.day.excel </field>
+            <field name="model">sale.day.book.report.excel</field>
+            <field name="arch" type="xml">
+                <form string="Genrated xls File">
+                    <group>
+                        <field name="file_name" invisible="1"/>
+                        <field name="excel_file" readonly="1" filename="file_name"/>
+                    </group>
+                    <footer>
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_sale_date_wizard_fifo" model="ir.ui.view">
+            <field name="name">sale.day.book.wizard.view</field>
+            <field name="model">sale.day.book.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Inventory Valuation">
+                    <group colspan="2" col="2">
+                        <group string="Warehouse">
+                            <field name="warehouse" widget="many2many_tags" />
+                        </group>
+                        <group string="Company">
+                            <field name="company_id"/>
+                        </group>
+                    </group>
+                    <group colspan="2" col="2">
+                        <group string="Location">
+                            <field name="location_id"/>
+                        </group>
+                        <group string="Filter By" attrs="{'invisible' : [('display_sum','=',True)]}">
+                            <field name="filter_by" widget="radio"/>
+
+                        </group>
+                        <group string="Valuation">
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="display_sum"/>
+                        </group>
+                    </group>
+
+                    <group string="Product" attrs="{'invisible' : ['|',('filter_by','!=','product'),('display_sum','=',True)]}"/>
+                    <field name="product_ids" attrs="{'invisible' : ['|',('filter_by','!=','product'),('display_sum','=',True)]}">
+                        <tree>
+                            <field name="name"/>
+                        </tree>
+                    </field>
+                    <group string="Category" attrs="{'invisible' : ['|',('filter_by','!=','categ'),('display_sum','=',True)]}"/>
+                    <field name="category" attrs="{'invisible' : ['|',('filter_by','!=','categ'),('display_sum','=',True)]}">
+                        <tree>
+                            <field name="name"/>
+                        </tree>
+                    </field>
+                    <footer>
+                        <button string="Print Pdf" name="print_report" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Print Excel" name="print_exl_report" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <menuitem id="menu_sales_day_book_fifo" name="Day Book Report" parent="account.menu_finance_reports"/>
+
+        <record id="action_sale_daybook_report_product_category_fifo" model="ir.actions.act_window">
+            <field name="name">Inventory Valuation</field>
+            <field name="res_model">sale.day.book.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_sale_book_report_product_category_fifo" name="Inventory Valuation Report FIFO"
+                parent="stock.menu_warehouse_report" action="action_sale_daybook_report_product_category_fifo"
+                groups="stock.group_stock_manager,stock.group_stock_user"/>
+
+
+    </data>
+</openerp>

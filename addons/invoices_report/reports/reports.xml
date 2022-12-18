@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="action_invoice_report_pdf" model="ir.actions.report">
+            <field name="name">Invoices Report</field>
+            <field name="model">account.move</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">invoices_report.grouped_invoice_report_pdf</field>
+            <field name="report_file">invoices_report.grouped_invoice_report_pdf</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_bill_report_pdf" model="ir.actions.report">
+            <field name="name">Bills Report</field>
+            <field name="model">account.move</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">invoices_report.grouped_bill_report_pdf</field>
+            <field name="report_file">invoices_report.grouped_bill_report_pdf</field>
+            <field name="binding_type">report</field>
+        </record>
+
+    </data>
+</odoo>

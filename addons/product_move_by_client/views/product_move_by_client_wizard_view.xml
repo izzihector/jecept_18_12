@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="form_view_product_move_by_client_wizard">
+            <field name="name">Product Move By Client</field>
+            <field name="model">product.move.by.client.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Wizard">
+                    <group>
+                        <field name="client_id"/>
+                        <field name="from_date"/>
+                        <field name="to_date"/>
+                    </group>
+                    <footer>
+                        <button type="object" name="print_report" string="Print" class="btn btn-primary"/>
+                        <button type="object" special="cancel" string="Cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_product_move_by_client" model="ir.actions.act_window">
+            <field name="name">Product Move By Client</field>
+            <field name="res_model">product.move.by.client.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="form_view_product_move_by_client_wizard"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_product_move_by_client" parent="stock.menu_warehouse_report"
+                  name="Product Move By Client"
+                  action="action_product_move_by_client" sequence="152"/>
+
+    </data>
+</odoo>

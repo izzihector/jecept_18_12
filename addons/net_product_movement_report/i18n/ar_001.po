@@ -1,0 +1,189 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* net_product_movement_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-08 13:45+0000\n"
+"PO-Revision-Date: 2022-12-08 13:45+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: net_product_movement_report
+#: model_terms:ir.ui.view,arch_db:net_product_movement_report.net_product_movement_report
+msgid "<b style=\"margin-right: 10px;\">From Date:</b>"
+msgstr "<b style=\"margin-right: 10px;\">من تاريخ:</b>"
+
+#. module: net_product_movement_report
+#: model_terms:ir.ui.view,arch_db:net_product_movement_report.net_product_movement_report
+msgid "<b style=\"margin-right: 10px;\">Internal Reference:</b>"
+msgstr "<b style=\"margin-right: 10px;\">رمز المادة:</b>"
+
+#. module: net_product_movement_report
+#: model_terms:ir.ui.view,arch_db:net_product_movement_report.net_product_movement_report
+msgid "<b style=\"margin-right: 10px;\">Location:</b>"
+msgstr "<b style=\"margin-right: 10px;\">المستودع:</b>"
+
+#. module: net_product_movement_report
+#: model_terms:ir.ui.view,arch_db:net_product_movement_report.net_product_movement_report
+msgid "<b style=\"margin-right: 10px;\">Opening Balance - Amount:</b>"
+msgstr "<b style=\"margin-right: 10px;\">الرصيد الافتتاحي - قيمة:</b>"
+
+#. module: net_product_movement_report
+#: model_terms:ir.ui.view,arch_db:net_product_movement_report.net_product_movement_report
+msgid "<b style=\"margin-right: 10px;\">Opening Balance - Quantity:</b>"
+msgstr "<b style=\"margin-right: 10px;\">الرصيد الافتتاحي - كمية:</b>"
+
+#. module: net_product_movement_report
+#: model_terms:ir.ui.view,arch_db:net_product_movement_report.net_product_movement_report
+msgid "<b style=\"margin-right: 10px;\">Product Name:</b>"
+msgstr "<b style=\"margin-right: 10px;\">اسم المادة:</b>"
+
+#. module: net_product_movement_report
+#: model_terms:ir.ui.view,arch_db:net_product_movement_report.net_product_movement_report
+msgid "<b style=\"margin-right: 10px;\">To Date:</b>"
+msgstr "<b style=\"margin-right: 10px;\">الى تاريخ:</b>"
+
+#. module: net_product_movement_report
+#: model_terms:ir.ui.view,arch_db:net_product_movement_report.net_product_movement_report
+msgid "<b>Date:</b>"
+msgstr "<b>التاريخ:</b>"
+
+#. module: net_product_movement_report
+#: model_terms:ir.ui.view,arch_db:net_product_movement_report.net_product_movement_report
+msgid "<b>Time:</b>"
+msgstr "<b>الوقت:</b>"
+
+#. module: net_product_movement_report
+#: model_terms:ir.ui.view,arch_db:net_product_movement_report.net_product_movement_report
+msgid "<span style=\"font-weight: bold;\">Total Of Incoming</span>"
+msgstr "<span style=\"font-weight: bold;\">مجموع الوارد</span>"
+
+#. module: net_product_movement_report
+#: model_terms:ir.ui.view,arch_db:net_product_movement_report.net_product_movement_report
+msgid "<span style=\"font-weight: bold;\">Total Of Outgoing</span>"
+msgstr "<span style=\"font-weight: bold;\">مجموع الخارج</span>"
+
+#. module: net_product_movement_report
+#: model_terms:ir.ui.view,arch_db:net_product_movement_report.net_product_movement_report
+msgid "<span style=\"font-weight: bold;\">Total Of Purchases</span>"
+msgstr "<span style=\"font-weight: bold;\">مجموع المشتريات</span>"
+
+#. module: net_product_movement_report
+#: model_terms:ir.ui.view,arch_db:net_product_movement_report.net_product_movement_report
+msgid "<span style=\"font-weight: bold;\">Total Of Sales</span>"
+msgstr "<span style=\"font-weight: bold;\">مجموع المبيعات</span>"
+
+#. module: net_product_movement_report
+#: model_terms:ir.ui.view,arch_db:net_product_movement_report.form_net_product_movement_wizard
+msgid "Cancel"
+msgstr "الغاء"
+
+#. module: net_product_movement_report
+#: model:ir.model.fields,field_description:net_product_movement_report.field_net_product_movement_wizard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: net_product_movement_report
+#: model:ir.model.fields,field_description:net_product_movement_report.field_net_product_movement_wizard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: net_product_movement_report
+#: model:ir.model.fields,field_description:net_product_movement_report.field_net_product_movement_wizard__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: net_product_movement_report
+#: code:addons/net_product_movement_report/wizard/net_product_movement_wizard.py:0
+#, python-format
+msgid "End date should be after start date"
+msgstr "تاريخ الانتهاء يجب ان يكون بعد تاريخ الابتداء"
+
+#. module: net_product_movement_report
+#: model:ir.model.fields,field_description:net_product_movement_report.field_net_product_movement_wizard__from_date
+msgid "From Date"
+msgstr "من تاريخ"
+
+#. module: net_product_movement_report
+#: model:ir.model.fields,field_description:net_product_movement_report.field_net_product_movement_wizard__id
+msgid "ID"
+msgstr ""
+
+#. module: net_product_movement_report
+#: model:ir.model.fields,field_description:net_product_movement_report.field_net_product_movement_wizard____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: net_product_movement_report
+#: model:ir.model.fields,field_description:net_product_movement_report.field_net_product_movement_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: net_product_movement_report
+#: model:ir.model.fields,field_description:net_product_movement_report.field_net_product_movement_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: net_product_movement_report
+#: model:ir.model.fields,field_description:net_product_movement_report.field_net_product_movement_wizard__location_id
+msgid "Location"
+msgstr "المستودع"
+
+#. module: net_product_movement_report
+#: model_terms:ir.ui.view,arch_db:net_product_movement_report.net_product_movement_report
+msgid "Name Of The Movement"
+msgstr "اسم الحركة"
+
+#. module: net_product_movement_report
+#: model:ir.actions.report,name:net_product_movement_report.action_net_product_movement_report
+#: model:ir.ui.menu,name:net_product_movement_report.menu_net_product_movement
+msgid "Net Product Movement"
+msgstr "صافي حركة مادة"
+
+#. module: net_product_movement_report
+#: model:ir.model,name:net_product_movement_report.model_net_product_movement_wizard
+#: model_terms:ir.ui.view,arch_db:net_product_movement_report.net_product_movement_report
+msgid "Net Product Movement Report"
+msgstr "تقرير صافي حركة مادة"
+
+#. module: net_product_movement_report
+#: model:ir.actions.act_window,name:net_product_movement_report.action_net_product_movement
+msgid "Net Product Movement Wizard"
+msgstr ""
+
+#. module: net_product_movement_report
+#: model_terms:ir.ui.view,arch_db:net_product_movement_report.net_product_movement_report
+msgid "Net Value"
+msgstr "صافي القيمة"
+
+#. module: net_product_movement_report
+#: model_terms:ir.ui.view,arch_db:net_product_movement_report.form_net_product_movement_wizard
+msgid "Print"
+msgstr "طباعة"
+
+#. module: net_product_movement_report
+#: model:ir.model.fields,field_description:net_product_movement_report.field_net_product_movement_wizard__product_id
+msgid "Product"
+msgstr "مادة"
+
+#. module: net_product_movement_report
+#: model_terms:ir.ui.view,arch_db:net_product_movement_report.net_product_movement_report
+msgid "Quantity"
+msgstr "كمية"
+
+#. module: net_product_movement_report
+#: model:ir.model.fields,field_description:net_product_movement_report.field_net_product_movement_wizard__to_date
+msgid "To Date"
+msgstr "الى تاريخ"
+
+#. module: net_product_movement_report
+#: model_terms:ir.ui.view,arch_db:net_product_movement_report.form_net_product_movement_wizard
+msgid "Wizard"
+msgstr ""

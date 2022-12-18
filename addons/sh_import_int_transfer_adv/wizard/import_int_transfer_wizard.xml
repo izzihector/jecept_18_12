@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="sh_import_int_transfer_adv_wizard" model="ir.ui.view">
+            <field name="name">sh.import.int.transfer.adv.wizard</field>
+            <field name="model">import.int.transfer.adv.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Import Internal Transfer Advance">
+                    <group>
+                        <field name="import_type" widget="radio" />
+                        <field name="scheduled_date" />
+                        <field name="product_by" widget="radio" />
+                        <field name="file" />
+                    </group>
+                    <footer>
+                        <button name="import_int_transfer_apply" string="Apply" type="object" class="btn-primary" />
+                        <button string="Cancel" class="btn-default" special="cancel" />
+
+                        <div style="float: right;">
+                            <strong>Download Sample:</strong>
+                            <a
+                                role="button"
+                                href="/sh_import_int_transfer_adv/static/download/sh_import_int_transfer_adv_csv.csv"
+                                class="btn-primary"
+                                style="margin: 0 10px; font-size: 12px; line-height: 1.5; border-radius: 3px; padding: 8px 10px; color: #ffffff;"
+                            >
+                                <i class="fa fa-download" /> CSV file
+                            </a>
+                            <a
+                                role="button"
+                                href="/sh_import_int_transfer_adv/static/download/sh_import_int_transfer_adv_excel.xls"
+                                class="btn-primary"
+                                style="font-size: 12px; line-height: 1.5; border-radius: 3px; padding: 8px 10px; color: #ffffff;"
+                            >
+                                <i class="fa fa-download" /> Excel file
+                            </a>
+                        </div>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="sh_import_int_transfer_adv_action" model="ir.actions.act_window">
+            <field name="name">Import Internal Transfer Advance</field>
+            <field name="res_model">import.int.transfer.adv.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="sh_import_int_transfer_adv_wizard" />
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="model_pdc_wizard_action_state_register" model="ir.actions.server">
+        <field name="name">Register The Checks</field>
+        <field name="model_id" ref="sh_pdc.model_pdc_wizard"/>
+        <field name="binding_model_id" ref="sh_pdc.model_pdc_wizard"/>
+        <field name="state">code</field>
+        <field name="binding_view_types">list</field>
+        <field name="code"> action = model.action_state_register() </field>
+    </record>
+
+    <record id="model_pdc_wizard_action_state_return" model="ir.actions.server">
+        <field name="name">Return The Checks</field>
+        <field name="model_id" ref="sh_pdc.model_pdc_wizard"/>
+        <field name="binding_model_id" ref="sh_pdc.model_pdc_wizard"/>
+        <field name="state">code</field>
+        <field name="binding_view_types">list</field>
+        <field name="code"> action = model.action_state_return() </field>
+    </record>
+
+    <record id="model_pdc_wizard_action_state_deposit" model="ir.actions.server">
+        <field name="name">Deposit The Checks</field>
+        <field name="model_id" ref="sh_pdc.model_pdc_wizard"/>
+        <field name="binding_model_id" ref="sh_pdc.model_pdc_wizard"/>
+        <field name="state">code</field>
+        <field name="binding_view_types">list</field>
+        <field name="code"> action = model.action_state_deposit() </field>
+    </record>
+
+    <record id="model_pdc_wizard_action_state_bounce" model="ir.actions.server">
+        <field name="name">Bounce The Checks</field>
+        <field name="model_id" ref="sh_pdc.model_pdc_wizard"/>
+        <field name="binding_model_id" ref="sh_pdc.model_pdc_wizard"/>
+        <field name="state">code</field>
+        <field name="binding_view_types">list</field>
+        <field name="code"> action = model.action_state_bounce() </field>
+    </record>
+     
+    <record id="model_pdc_wizard_action_state_done" model="ir.actions.server">
+        <field name="name">Done The Checks</field>
+        <field name="model_id" ref="sh_pdc.model_pdc_wizard"/>
+        <field name="binding_model_id" ref="sh_pdc.model_pdc_wizard"/>
+        <field name="state">code</field>
+        <field name="binding_view_types">list</field>
+        <field name="code"> action = model.action_state_done() </field>
+    </record>
+
+    <record id="model_pdc_wizard_action_state_cancel" model="ir.actions.server">
+        <field name="name">Cancel The Checks</field>
+        <field name="model_id" ref="sh_pdc.model_pdc_wizard"/>
+        <field name="binding_model_id" ref="sh_pdc.model_pdc_wizard"/>
+        <field name="state">code</field>
+        <field name="binding_view_types">list</field>
+        <field name="code"> action = model.action_state_cancel() </field>
+    </record>
+</odoo>

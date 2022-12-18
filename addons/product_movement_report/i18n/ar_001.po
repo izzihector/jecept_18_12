@@ -1,0 +1,215 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* product_movement_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-08 13:52+0000\n"
+"PO-Revision-Date: 2022-12-08 13:52+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: product_movement_report
+#: model_terms:ir.ui.view,arch_db:product_movement_report.product_movement_report
+msgid "<b style=\"margin-right: 10px;\">From Date:</b>"
+msgstr "<b style=\"margin-right: 10px;\">من تاريخ:</b>"
+
+#. module: product_movement_report
+#: model_terms:ir.ui.view,arch_db:product_movement_report.product_movement_report
+msgid "<b style=\"margin-right: 10px;\">Internal Reference:</b>"
+msgstr "<b style=\"margin-right: 10px;\">رمز المادة:</b>"
+
+#. module: product_movement_report
+#: model_terms:ir.ui.view,arch_db:product_movement_report.product_movement_report
+msgid "<b style=\"margin-right: 10px;\">Opening Balance - Amount:</b>"
+msgstr "<b style=\"margin-right: 10px;\">الرصيد الافتتاحي - قيمة:</b>"
+
+#. module: product_movement_report
+#: model_terms:ir.ui.view,arch_db:product_movement_report.product_movement_report
+msgid "<b style=\"margin-right: 10px;\">Opening Balance - Quantity:</b>"
+msgstr "<b style=\"margin-right: 10px;\">الرصيد الافتتاحي - كمية:</b>"
+
+#. module: product_movement_report
+#: model_terms:ir.ui.view,arch_db:product_movement_report.product_movement_report
+msgid "<b style=\"margin-right: 10px;\">Product:</b>"
+msgstr "<b style=\"margin-right: 10px;\">المادة:</b>"
+
+#. module: product_movement_report
+#: model_terms:ir.ui.view,arch_db:product_movement_report.product_movement_report
+msgid "<b style=\"margin-right: 10px;\">To Date:</b>"
+msgstr "<b style=\"margin-right: 10px;\">الى تاريخ:</b>"
+
+#. module: product_movement_report
+#: model_terms:ir.ui.view,arch_db:product_movement_report.product_movement_report
+msgid "<b>Date:</b>"
+msgstr "<b>التاريخ:</b>"
+
+#. module: product_movement_report
+#: model_terms:ir.ui.view,arch_db:product_movement_report.product_movement_report
+msgid "<b>Time:</b>"
+msgstr "<b>الوقت:</b>"
+
+#. module: product_movement_report
+#: model_terms:ir.ui.view,arch_db:product_movement_report.product_movement_report
+msgid "<span style=\"font-weight: bold;\">Total Of Incoming</span>"
+msgstr "<span style=\"font-weight: bold;\">مجموع الوارد</span>"
+
+#. module: product_movement_report
+#: model_terms:ir.ui.view,arch_db:product_movement_report.product_movement_report
+msgid "<span style=\"font-weight: bold;\">Total Of Outgoing</span>"
+msgstr "<span style=\"font-weight: bold;\">مجموع الخارج</span>"
+
+#. module: product_movement_report
+#: model_terms:ir.ui.view,arch_db:product_movement_report.product_movement_report
+msgid "<span style=\"font-weight: bold;\">Total Of Purchases</span>"
+msgstr "<span style=\"font-weight: bold;\">مجموع المشتريات</span>"
+
+#. module: product_movement_report
+#: model_terms:ir.ui.view,arch_db:product_movement_report.product_movement_report
+msgid "<span style=\"font-weight: bold;\">Total Of Sales</span>"
+msgstr "<span style=\"font-weight: bold;\">مجموع المبيعات</span>"
+
+#. module: product_movement_report
+#: model_terms:ir.ui.view,arch_db:product_movement_report.product_movement_report
+msgid "<span>Incoming</span>"
+msgstr "<span>الوارد</span>"
+
+#. module: product_movement_report
+#: model_terms:ir.ui.view,arch_db:product_movement_report.product_movement_report
+msgid "<span>Outgoing</span>"
+msgstr "<span>الخارج</span>"
+
+#. module: product_movement_report
+#: model_terms:ir.ui.view,arch_db:product_movement_report.product_movement_report
+msgid "<span>Purchase</span>"
+msgstr "<span>شراء</span>"
+
+#. module: product_movement_report
+#: model_terms:ir.ui.view,arch_db:product_movement_report.product_movement_report
+msgid "<span>Sale</span>"
+msgstr "<span>بيع</span>"
+
+#. module: product_movement_report
+#: model_terms:ir.ui.view,arch_db:product_movement_report.form_product_movement_wizard
+msgid "Cancel"
+msgstr "الغاء"
+
+#. module: product_movement_report
+#: model:ir.model.fields,field_description:product_movement_report.field_product_movement_wizard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: product_movement_report
+#: model:ir.model.fields,field_description:product_movement_report.field_product_movement_wizard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: product_movement_report
+#: model_terms:ir.ui.view,arch_db:product_movement_report.product_movement_report
+msgid "Date"
+msgstr "التاريخ"
+
+#. module: product_movement_report
+#: model:ir.model.fields,field_description:product_movement_report.field_product_movement_wizard__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: product_movement_report
+#: code:addons/product_movement_report/wizard/product_movement_wizard.py:0
+#, python-format
+msgid "End date should be after start date"
+msgstr "تاريخ الانتهاء يجب ان يكون بعد تاريخ البداية"
+
+#. module: product_movement_report
+#: model:ir.model.fields,field_description:product_movement_report.field_product_movement_wizard__from_date
+msgid "From Date"
+msgstr "من تاريخ"
+
+#. module: product_movement_report
+#: model:ir.model.fields,field_description:product_movement_report.field_product_movement_wizard__id
+msgid "ID"
+msgstr ""
+
+#. module: product_movement_report
+#: model:ir.model.fields,field_description:product_movement_report.field_product_movement_wizard____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: product_movement_report
+#: model:ir.model.fields,field_description:product_movement_report.field_product_movement_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: product_movement_report
+#: model:ir.model.fields,field_description:product_movement_report.field_product_movement_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: product_movement_report
+#: model:ir.model.fields,field_description:product_movement_report.field_product_movement_wizard__location_id
+msgid "Location"
+msgstr "المستودع"
+
+#. module: product_movement_report
+#: model_terms:ir.ui.view,arch_db:product_movement_report.product_movement_report
+msgid "Name Of The Movement"
+msgstr "اسم الحركة"
+
+#. module: product_movement_report
+#: model_terms:ir.ui.view,arch_db:product_movement_report.product_movement_report
+msgid "Order Number"
+msgstr "رقم الحركة"
+
+#. module: product_movement_report
+#: model_terms:ir.ui.view,arch_db:product_movement_report.form_product_movement_wizard
+msgid "Print"
+msgstr "طباعة"
+
+#. module: product_movement_report
+#: model:ir.model.fields,field_description:product_movement_report.field_product_movement_wizard__product_id
+msgid "Product"
+msgstr "المادة"
+
+#. module: product_movement_report
+#: model:ir.actions.report,name:product_movement_report.action_product_movement_report
+#: model:ir.model,name:product_movement_report.model_product_movement_wizard
+#: model_terms:ir.ui.view,arch_db:product_movement_report.product_movement_report
+msgid "Product Movement"
+msgstr "حركة المادة"
+
+#. module: product_movement_report
+#: model:ir.actions.act_window,name:product_movement_report.action_product_movement
+#: model:ir.ui.menu,name:product_movement_report.menu_product_movement
+msgid "Product Movement Report"
+msgstr "تقرير حركة مادة"
+
+#. module: product_movement_report
+#: model_terms:ir.ui.view,arch_db:product_movement_report.product_movement_report
+msgid "Quantity"
+msgstr "الكمية"
+
+#. module: product_movement_report
+#: model_terms:ir.ui.view,arch_db:product_movement_report.product_movement_report
+msgid "Subtotal"
+msgstr "المجموع"
+
+#. module: product_movement_report
+#: model:ir.model.fields,field_description:product_movement_report.field_product_movement_wizard__to_date
+msgid "To Date"
+msgstr "الى تاريخ"
+
+#. module: product_movement_report
+#: model_terms:ir.ui.view,arch_db:product_movement_report.product_movement_report
+msgid "Unit Price"
+msgstr "سعر القطعة"
+
+#. module: product_movement_report
+#: model_terms:ir.ui.view,arch_db:product_movement_report.form_product_movement_wizard
+msgid "Wizard"
+msgstr ""

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data noupdate="0">
+        <record id="group_restrict_move_post" model="res.groups">
+            <field name="name">Restrict posting of invoices, bills, entries</field>
+        </record>
+    </data>
+</odoo>

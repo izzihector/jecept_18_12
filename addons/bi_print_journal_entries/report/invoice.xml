@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<data>
+
+		<template inherit_id="web.minimal_layout" id="minimal_layout_inherit12311">
+			<xpath expr="//head" position="inside">
+				<link rel="preconnect" href="https://fonts.gstatic.com" />
+<!--				<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300&amp;display=swap" rel="stylesheet"/>-->
+				<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&amp;display=swap" rel="stylesheet"/>
+			</xpath>
+		</template>
+
+		<template id="report_invoice_document_inherit" inherit_id="account.report_invoice_document">
+
+			<xpath expr="//div[hasclass('page')]" position="inside">
+				<style>
+					* { font-family: 'Noto Naskh Arabic', sans-serif; }
+				</style>
+			</xpath>
+
+<!--			style="background:#e1e1e1;"-->
+			<xpath expr="//div[@id='informations']" position="replace">
+				<div id="informations_custom" dir="rtl" class="text-right">
+					<table dir="rtl" class="border-0">
+						<tr dir="rtl" class="border-0">
+							<td class="text-left border-0" style="width:140px;"><strong>التاريخ :</strong></td>
+							<td class="text-right pr-2 border-0"><span t-field="o.invoice_date"/></td>
+						</tr>
+						<tr dir="rtl" class="border-0">
+							<td class="text-left border-0"><strong>المطلوب من :</strong></td>
+							<td class="text-right pr-2 border-0"><span t-field="o.partner_id.display_name"/></td>
+						</tr>
+						<tr dir="rtl" class="border-0">
+							<td class="text-left pr-1 pl-1 border-0"><strong>رقم ضريبة المبيعات : </strong></td>
+							<td class="text-right pr-2 border-0"><span t-field="o.company_id.vat"/></td>
+						</tr>
+					</table>
+					<br/>
+
+
+
+					<!--					<strong>المطلوب من : </strong>-->
+					<!--					<span t-field="o.partner_id.display_name"/>-->
+					<!--					<br/>-->
+					<!--					<strong>رقم ضريبة المبيعات : </strong>-->
+					<!--					<span t-field="o.company_id.vat"/>-->
+				</div>
+			</xpath>
+
+			<xpath expr="//div[@id='qrcode']" position="after">
+				<br/>
+				<div class="row">
+					<div class="col-3 text-center">
+						<strong>توقيع وختم المستلم</strong>
+					</div>
+
+					<div class="col-3 text-center">
+						<strong>رصيد العميل لتاريخه</strong>
+						<t t-if="o.partner_id">
+							<p><span t-esc=" o.partner_id.credit - o.partner_id.debit "/></p>
+						</t>
+					</div>
+					<div class="col-3 text-center">
+						<strong>اسم المندوب</strong>
+						<p><span t-esc="o.invoice_user_id.name"/></p>
+					</div>
+					<div class="col-3 text-center">
+						<strong>منظم الفاتورة</strong>
+						<p><span t-esc="o.create_uid.name"/></p>
+					</div>
+				</div>
+<!--				<br/>-->
+			</xpath>
+			<xpath expr="//t[@t-set='address']" position="replace">
+			</xpath>
+
+
+		</template>
+
+	</data>
+</odoo>

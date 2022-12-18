@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_pdc_payment">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <center><h2>PDC Payment Report</h2></center>
+                    <br />
+                    <table class="table table-condensed" name="pdc_table" width="100%">
+                        <tr>
+                            <th width="15%">Name</th>
+                            <th width="15%">Customer</th>
+                            <th width="15%">Bank</th>
+                            <th width="10%">Payment Date</th>
+                            <th width="15%">Payment Amount</th>
+                            <th width="20%">Cheque Reference</th>
+
+                            <th width="10%">Status</th>
+                        </tr>
+                        <tr t-foreach="docs" t-as="doc">
+                            <td width="15%">
+                                <span t-field="doc.name" />
+                            </td>
+                            <td width="15%"><span t-field="doc.partner_id.name" /></td>
+                            <td width="15%"><span t-field="doc.bank_id.display_name" /></td>
+                            <td width="10%"><span t-field="doc.payment_date" /></td>
+                            <td width="15%"><span t-field="doc.payment_amount" /></td>
+                            <td width="20%"><span t-field="doc.reference" /></td>
+                            <td width="10%"><span t-field="doc.state" /></td>
+                        </tr>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+    <record id="paperformat_pdc" model="report.paperformat">
+        <field name="name">PDC</field>
+        <field name="default" eval="True" />
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">50</field>
+        <field name="margin_bottom">5</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">45</field>
+        <field name="dpi">80</field>
+    </record>
+
+    <record id="action_report_pdc_payment" model="ir.actions.report">
+        <field name="name">PDC Payment Report</field>
+        <field name="model">pdc.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">sh_pdc.report_pdc_payment</field>
+        <field name="report_file">sh_pdc.report_pdc_payment</field>
+        <field name="binding_model_id" ref="sh_pdc.model_pdc_wizard" />
+        <field name="paperformat_id" ref="sh_pdc.paperformat_pdc" />
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

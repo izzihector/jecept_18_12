@@ -1,0 +1,287 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="custom_paper_format_qweb" model="report.paperformat">
+            <field name="name">custom report qweb paperformat</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">50</field>
+            <field name="margin_bottom">40</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">40</field>
+            <field name="dpi">110</field>
+        </record>
+
+        <record id="action_product_movement_report" model="ir.actions.report">
+            <field name="name">Product Movement</field>
+            <field name="model">product.movement.wizard</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">product_movement_report.product_movement_report</field>
+            <field name="report_file">product_movement_report.product_movement_report</field>
+            <field name="paperformat_id" ref="custom_paper_format_qweb"/>
+            <field name="binding_model_id" ref="model_product_movement_wizard"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <template id="product_movement_report">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout" style="background:unset">
+                    <div class="page">
+                        <style>
+                            .page .header-table td{
+                            border:none !important;
+                            }
+                            .page > table tr td:last-child{
+                            background:unset !important;
+                            }
+                        </style>
+
+                        <h4 style="text-align:center">Product Movement</h4>
+
+                        <div style="width:100%; border: 1px solid black; padding:1%;">
+                            <table style="width:100%; border:none;" class="header-table" cellspacing="0"
+                                   cellpadding="0">
+                                <tr>
+                                    <td style="border-right: none;">
+                                        <b>Date:</b>
+                                    </td>
+                                    <td>
+                                        <span t-esc="datetime.datetime.now().strftime('%d/%m/%Y')"></span>
+                                    </td>
+                                    <td style="border-right: none;">
+                                        <b>Time:</b>
+                                    </td>
+                                    <td>
+                                        <span t-esc="(context_timestamp(datetime.datetime.now())+datetime.timedelta(hours=1)).strftime('%H:%M')"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <b style="margin-right: 10px;">From Date:</b>
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <span t-esc="from_date"/>
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <b style="margin-right: 10px;">To Date:</b>
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <span t-esc="to_date"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <b style="margin-right: 10px;">Opening Balance - Quantity:</b>
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <span t-esc="opening_balance_qty"/>
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <b style="margin-right: 10px;">Opening Balance - Amount:</b>
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <span t-esc="'%.4f'%opening_balance_amount"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left; border-right: none;">
+                                        <b style="margin-right: 10px;">Product:</b>
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <span t-esc="product"/>
+                                    </td>
+                                    <td style="text-align: left; border-right: none;">
+                                        <b style="margin-right: 10px;">Internal Reference:</b>
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <span t-esc="product_code"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <b style="margin-right: 10px;">Location:</b>
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <span t-esc="location"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <br/>
+                        <br/>
+
+                        <table style="width:100%" class="table table-sm o_main_table">
+                            <thead>
+                                <tr style="background-color: silver; border: 1px solid;">
+                                    <td style="border: 1px black solid; text-align:center;">
+                                        Order Number
+                                    </td>
+
+                                    <td style="border: 1px black solid; text-align:center;">
+                                        Date
+                                    </td>
+
+                                    <td style="border: 1px black solid; text-align:center;">
+                                        Name Of The Movement
+                                    </td>
+
+                                    <td style="border: 1px black solid; text-align:center;">
+                                        Quantity
+                                    </td>
+
+                                    <td style="border: 1px black solid; text-align:center;">
+                                        Unit Price
+                                    </td>
+
+                                    <td style="border: 1px black solid; text-align:center;">
+                                        Subtotal
+                                    </td>
+                                    <td style="display:none;">
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="list_of_sales_product_and_purchases_product" t-as="line">
+                                    <tr>
+                                        <td style="border: 1px solid; padding:5px; text-align:center;">
+                                            <span t-esc="line['o_number']"/>
+                                        </td>
+
+                                        <td style="border: 1px solid; padding:5px; text-align:center;">
+                                            <span t-esc="line['date']"/>
+                                        </td>
+
+                                        <td style="border: 1px solid; padding:5px; text-align:center;">
+                                            <t t-if="line['name'] == 'purchase'">
+                                                <span>Purchase</span>
+                                            </t>
+                                            <t t-if="line['name'] == 'incoming'">
+                                                <span>Incoming</span>
+                                            </t>
+                                            <t t-if="line['name'] == 'sale'">
+                                                <span>Sale</span>
+                                            </t>
+                                            <t t-if="line['name'] == 'outgoing'">
+                                                <span>Outgoing</span>
+                                            </t>
+                                        </td>
+
+                                        <td style="border: 1px solid; padding:5px; text-align:center;">
+                                            <span t-esc="'%.4f'%line['qty']"/>
+                                        </td>
+
+                                        <td style="border: 1px solid; padding:5px; text-align:center;">
+                                            <span t-esc="'%.4f'%line['unit_price']"/>
+                                        </td>
+
+                                        <td style="border: 1px solid; padding:5px; text-align:center;">
+                                            <span t-esc="'%.4f'%line['sub_total']"/>
+                                        </td>
+
+                                        <td style="display:none;">
+                                        </td>
+                                    </tr>
+
+                                </t>
+
+                                <tr>
+                                    <td colspan="3"
+                                        style="border: 1px solid; padding:5px; text-align:center;background-color: #AFBBCB;">
+                                        <span style="font-weight: bold;">Total Of Purchases</span>
+                                    </td>
+
+                                    <td style="border: 1px solid; padding:5px; text-align:center;background-color: #AFBBCB;">
+                                        <span style="font-weight: bold;" t-esc="'%.4f'%sum_of_qty_purchase"/>
+                                    </td>
+
+                                    <td style="border: 1px solid; padding:5px; text-align:center;background-color: #AFBBCB; ">
+                                        <span style="font-weight: bold;" t-esc="'%.4f'%sum_of_unit_price_purchase"/>
+                                    </td>
+
+                                    <td style="border: 1px solid; padding:5px; text-align:center;background-color: #AFBBCB; ">
+                                        <span style="font-weight: bold;" t-esc="'%.4f'%sum_of_subtotal_purchase"/>
+                                    </td>
+
+                                    <td style="display:none;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"
+                                        style="border: 1px solid; padding:5px; text-align:center;background-color: #AFBBCB;">
+                                        <span style="font-weight: bold;">Total Of Sales</span>
+                                    </td>
+
+                                    <td style="border: 1px solid; padding:5px; text-align:center;background-color: #AFBBCB;">
+                                        <span style="font-weight: bold;" t-esc="'%.4f'%sum_of_qty_sale"/>
+                                    </td>
+
+                                    <td style="border: 1px solid; padding:5px; text-align:center;background-color: #AFBBCB; ">
+                                        <span style="font-weight: bold;" t-esc="'%.4f'%sum_of_unit_price_sale"/>
+                                    </td>
+
+                                    <td style="border: 1px solid; padding:5px; text-align:center;background-color: #AFBBCB; ">
+                                        <span style="font-weight: bold;" t-esc="'%.4f'%sum_of_subtotal_sale"/>
+                                    </td>
+
+                                    <td style="display:none;">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="3"
+                                        style="border: 1px solid; padding:5px; text-align:center;background-color: #AFBBCB;">
+                                        <span style="font-weight: bold;">Total Of Incoming</span>
+                                    </td>
+
+                                    <td style="border: 1px solid; padding:5px; text-align:center;background-color: #AFBBCB;">
+                                        <span style="font-weight: bold;" t-esc="'%.4f'%sum_of_qty_incoming"/>
+                                    </td>
+
+                                    <td style="border: 1px solid; padding:5px; text-align:center;background-color: #AFBBCB; ">
+                                        <span style="font-weight: bold;" t-esc="'%.4f'%sum_of_unit_price_incoming"/>
+                                    </td>
+
+                                    <td style="border: 1px solid; padding:5px; text-align:center;background-color: #AFBBCB; ">
+                                        <span style="font-weight: bold;" t-esc="'%.4f'%sum_of_subtotal_incoming"/>
+                                    </td>
+
+                                    <td style="display:none;">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="3"
+                                        style="border: 1px solid; padding:5px; text-align:center;background-color: #AFBBCB;">
+                                        <span style="font-weight: bold;">Total Of Outgoing</span>
+                                    </td>
+
+                                    <td style="border: 1px solid; padding:5px; text-align:center;background-color: #AFBBCB;">
+                                        <span style="font-weight: bold;" t-esc="'%.4f'%sum_of_qty_outgoing"/>
+                                    </td>
+
+                                    <td style="border: 1px solid; padding:5px; text-align:center;background-color: #AFBBCB; ">
+                                        <span style="font-weight: bold;" t-esc="'%.4f'%sum_of_unit_price_outgoing"/>
+                                    </td>
+
+                                    <td style="border: 1px solid; padding:5px; text-align:center;background-color: #AFBBCB; ">
+                                        <span style="font-weight: bold;" t-esc="'%.4f'%sum_of_subtotal_outgoing"/>
+                                    </td>
+
+                                    <td style="display:none;">
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

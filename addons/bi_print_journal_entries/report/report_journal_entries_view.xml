@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<data>
+
+		<template id="journal_entry_template_report_view">
+			<t t-call="web.internal_layout">
+				<t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/>
+				<div class="page">
+<!--					<br/>-->
+					<div class="oe_structure"/>
+					<div>
+						<h2 class="text-center mb32">
+							<strong>Journal Entry</strong>
+						</h2>
+					</div>
+					<style>
+						td { font-size: 12px; vertical-align:middle; text-align:center;border: 1px solid #e1e1e1; }
+					</style>
+
+<!--					<table style="width:100%;margin:0px auto;background:white;border:1px solid #e1e1e1;" class="table table-condensed">-->
+					<table style="width:100%;border:1px solid #e1e1e1;">
+						<tbody>
+							<tr height="30px" style="border-bottom:1px solid #e1e1e1;">
+								<td><strong>Journal Entry : </strong></td>
+								<td><span t-field="o.name"/></td>
+								<td><strong>Journal :</strong></td>
+								<td><span t-field="o.journal_id"/></td>
+							</tr>
+							<tr height="20px">
+								<td><strong>Date :</strong></td>
+								<td><span t-field="o.date"/></td>
+								<td><strong>Reference :</strong></td>
+								<td><span t-field="o.ref"/></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<br/>
+
+<!--					<table style="width:100%;margin:0px auto;background:white;border:1px solid #e1e1e1;" class="table table-condensed">-->
+					<table style="width:100%;border:1px solid #e1e1e1;">
+						<!--						<thead>-->
+						<!--							<tr>-->
+						<!--								&lt;!&ndash;							<th>Partner</th>&ndash;&gt;-->
+						<!--								<th>Label</th>-->
+						<!--								<th>Account</th>-->
+						<!--&lt;!&ndash;								<th>Due Date</th>&ndash;&gt;-->
+						<!--&lt;!&ndash;								<th>Analytic Account</th>&ndash;&gt;-->
+						<!--&lt;!&ndash;								<th>Taxes(%)</th>&ndash;&gt;-->
+						<!--								<th>Debit</th>-->
+						<!--								<th>Credit</th>-->
+						<!--							</tr>-->
+						<!--						</thead>-->
+						<tbody class="consumed_tbody">
+							<tr>
+								<td><strong>Label</strong></td>
+								<td><strong>Account Name</strong></td>
+								<td><strong>Account Number</strong></td>
+								<td><strong>Partner</strong></td>
+								<td><strong>Taxes(%)</strong></td>
+								<td><strong>Debit</strong></td>
+								<td><strong>Credit</strong></td>
+								<td><strong>Currency</strong></td>
+							</tr>
+							<t t-set="total" t-value="0.0"/>
+							<t t-set="total1" t-value="0.0"/>
+							<t t-foreach="o.line_ids" t-as="line">
+								<tr>
+
+									<td><span t-field="line.name" /></td>
+									<td><span t-field="line.account_id.name" /></td>
+									<td><span t-field="line.account_id.code" /></td>
+									<td><span t-field="line.partner_id" /></td>
+									<!--							<td>-->
+									<!--								<span t-field="line.date_maturity" />-->
+									<!--							</td>-->
+									<!--							<td>-->
+									<!--								<span t-field="line.analytic_account_id" />-->
+									<!--							</td>-->
+									<td>
+										<span t-field="line.tax_ids" />
+									</td>
+									<td>
+										<span t-esc="line.debit" />
+									</td>
+									<td>
+										<span t-esc="line.credit" />
+									</td>
+									<td>
+										<span t-field="line.currency_id" />
+									</td>
+								</tr>
+								<t t-set="total" t-value="total + line.debit"/>
+								<t t-set="total1" t-value="total1 + line.credit"/>
+							</t>
+							<tr>
+								<!--							<td></td>-->
+								<td class="border-0"></td>
+								<!--								<td></td>-->
+								<td class="border-0"></td>
+								<td class="border-0"></td>
+								<td class="border-0" colspan="2"><strong>Total:</strong></td>
+								<td width="10%">
+									<strong><span><t t-esc="total"/></span></strong>
+								</td>
+								<td width="10%">
+									<strong><span><t t-esc="total1"/></span></strong>
+								</td>
+								<td class="border-0"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</t>
+		</template>
+
+		<template id="journal_entry_report_template_id">
+			<t t-call="web.html_container">
+				<t t-foreach="docs" t-as="o">
+					<t t-call="bi_print_journal_entries.journal_entry_template_report_view"  t-lang="o.partner_id.lang"/>
+				</t>
+			</t>
+		</template>
+
+	</data>
+</odoo>

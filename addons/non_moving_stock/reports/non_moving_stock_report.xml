@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="action_non_moving_stock_report" model="ir.actions.report">
+            <field name="name">Non Moving Stock</field>
+            <field name="model">non.moving.stock.wizard</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">non_moving_stock.non_moving_stock_report</field>
+            <field name="report_file">non_moving_stock.non_moving_stock_report</field>
+            <!--<field name="print_report_name">(object.name_of_hotel)</field>-->
+            <field name="binding_model_id" ref="model_non_moving_stock_wizard"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <template id="non_moving_stock_report">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout" style="background:unset">
+                    <div class="page">
+                        <style>
+                            .page .header-table td{
+                            border:none !important;
+                            }
+                            .page > table tr td:last-child{
+                            background:unset !important;
+                            }
+                        </style>
+
+                        <h4 style="text-align:center">Non Moving Stock Report</h4>
+
+                        <div style="width:100%; border: 1px solid black; padding:1%;">
+                            <table style="width:100%; border:none;" class="header-table" cellspacing="0"
+                                   cellpadding="0">
+                                <tr>
+                                    <td style="border-right: none;">
+                                        <b>Date:</b>
+                                    </td>
+                                    <td>
+                                        <span t-esc="datetime.datetime.now().strftime('%d/%m/%Y')"></span>
+                                    </td>
+                                    <td style="border-right: none;">
+                                        <b>Time:</b>
+                                    </td>
+                                    <td>
+                                        <span t-esc="(context_timestamp(datetime.datetime.now())+datetime.timedelta(hours=1)).strftime('%H:%M')"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <b style="margin-right: 10px;">From Date:</b>
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <span t-esc="wizard['from_date']"
+                                              t-options='{"widget": "date","format": "dd/MM/yyyy"}'/>
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <b style="margin-right: 10px;">To Date:</b>
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <span t-esc="wizard['to_date']"
+                                              t-options='{"widget": "date","format": "dd/MM/yyyy"}'/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <br/>
+                        <br/>
+
+                        <table style="width:100%">
+                            <thead>
+                                <tr style="background-color: silver; border: 1px solid;">
+                                    <td style="border: 1px black solid; text-align:center;">
+                                        Product Name
+                                    </td>
+                                    <td style="border: 1px black solid; text-align:center;">
+                                        Internal Reference
+                                    </td>
+                                    <td style="display:none;">
+
+                                    </td>
+                                </tr>
+                            </thead>
+
+                            <tr t-foreach="list_of_stock_move_line" t-as="line">
+                                <td style="border: 1px solid; padding:5px; text-align:center;">
+                                    <span t-esc="line['product_name']"/>
+                                </td>
+                                <td style="border: 1px solid; padding:5px; text-align:center;">
+                                    <span t-esc="line['internal_ref']"/>
+                                </td>
+                                <td style="display:none;">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

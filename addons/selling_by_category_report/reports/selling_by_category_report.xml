@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="action_selling_by_category_report" model="ir.actions.report">
+            <field name="name">Selling By Category</field>
+            <field name="model">selling.by.category.wizard</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">selling_by_category_report.selling_by_category_report</field>
+            <field name="report_file">selling_by_category_report.selling_by_category_report</field>
+            <field name="binding_model_id" ref="model_selling_by_category_wizard"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <template id="selling_by_category_report">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout" style="background:unset">
+                    <div class="page">
+                        <style>
+                            .page .header-table td{
+                            border:none !important;
+                            }
+                            .page > table tr td:last-child{
+                            background:unset !important;
+                            }
+                        </style>
+
+                        <h4 style="text-align:center">Selling By Category</h4>
+
+                        <div style="width:100%; border: 1px solid black; padding:1%;">
+                            <table style="width:100%; border:none;" class="header-table" cellspacing="0"
+                                   cellpadding="0">
+                                <tr>
+                                    <td style="border-right: none;">
+                                        <b>Date:</b>
+                                    </td>
+                                    <td>
+                                        <span t-esc="datetime.datetime.now().strftime('%d/%m/%Y')"></span>
+                                    </td>
+                                    <td style="border-right: none;">
+                                        <b>Time:</b>
+                                    </td>
+                                    <td>
+                                        <span t-esc="(context_timestamp(datetime.datetime.now())+datetime.timedelta(hours=1)).strftime('%H:%M')"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <b style="margin-right: 10px;">From Date:</b>
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <span t-esc="from_date"/>
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <b style="margin-right: 10px;">To Date:</b>
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <span t-esc="to_date"/>
+                                    </td>
+                                </tr>
+                                  <tr>
+                                    <td style="text-align: left; border-right: none;" t-if="product_category">
+                                        <b style="margin-right: 10px;">Category:</b>
+                                    </td>
+                                    <td style="text-align: left;" t-if="product_category">
+                                        <span t-esc="product_category"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <br/>
+                        <br/>
+
+                        <table style="width:100%">
+                            <thead>
+                                <tr style="background-color: silver; border: 1px solid;">
+                                    <td style="border: 1px black solid; text-align:center;">
+                                        Category
+                                    </td>
+
+                                    <td style="border: 1px black solid; text-align:center;">
+                                        Quantity
+                                    </td>
+
+                                    <td style="border: 1px black solid; text-align:center;">
+                                        total sales Without Tax
+                                    </td>
+
+                                    <td style="border: 1px black solid; text-align:center;">
+                                        total sales With Tax
+                                    </td>
+                                    <td style="display:none;">
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="sum_of_qty" t-value="0"/>
+                                <t t-set="sum_of_amount" t-value="0"/>
+                                <t t-set="sum_of_price_with_tax" t-value="0"/>
+
+                                <t t-foreach="sales_product" t-as="line">
+                                    <tr>
+                                        <td style="border: 1px solid; padding:5px; text-align:center;">
+
+                                            <span t-esc="line['name']"/>
+                                        </td>
+
+                                        <td style="border: 1px solid; padding:5px; text-align:center;">
+
+                                            <span t-esc="'%.3f'%line['qty']"/>
+                                        </td>
+
+                                        <td style="border: 1px solid; padding:5px; text-align:center;">
+
+                                            <span t-esc="'%.3f'%line['amount']"/>
+                                        </td>
+
+                                        <td style="border: 1px solid; padding:5px; text-align:center;">
+
+                                            <span t-esc="'%.3f'%line['price_with_tax']"/>
+                                        </td>
+
+                                        <td style="display:none;">
+                                        </td>
+                                    </tr>
+                                    <t t-set="sum_of_qty" t-value="sum_of_qty + float('%.3f'%line['qty'])"/>
+                                    <t t-set="sum_of_amount" t-value="sum_of_amount + float('%.3f'%line['amount'])"/>
+                                    <t t-set="sum_of_price_with_tax" t-value="sum_of_price_with_tax + float('%.3f'%line['price_with_tax'])"/>
+
+                                </t>
+                                <tr>
+                                    <td style="border: 1px solid; padding:5px; text-align:center;background-color: #AFBBCB;">
+
+                                        <span style="font-weight: bold;">Total</span>
+                                    </td>
+
+                                    <td style="border: 1px solid; padding:5px; text-align:center;background-color: #AFBBCB;">
+
+                                        <span style="font-weight: bold;" t-esc="'%.3f'%sum_of_qty"/>
+                                    </td>
+
+                                    <td style="border: 1px solid; padding:5px; text-align:center;background-color: #AFBBCB; ">
+
+                                        <span style="font-weight: bold;" t-esc="'%.3f'%sum_of_amount"/>
+                                    </td>
+
+                                    <td style="border: 1px solid; padding:5px; text-align:center;background-color: #AFBBCB; ">
+
+                                        <span style="font-weight: bold;" t-esc="'%.3f'%sum_of_price_with_tax"/>
+                                    </td>
+
+                                    <td style="display:none;">
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

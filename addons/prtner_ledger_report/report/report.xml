@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <report id="general_ledger_report_as_pdf"
+            model="general.ledger.wizard"
+            string="Partner Ledger"
+            report_type="qweb-pdf"
+            name="prtner_ledger_report.general_ledger_template"/>
+        
+
+        <template id="general_ledger_template">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="oe_structure"/>
+                        <div class="text-left">
+                            <h3 class="text-center">Partner Statement </h3>
+                                <div class="row">
+                                    <table class="table table-borderd">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col"><h4 style="color:#008B8B;">Partner</h4></th>
+                                                <th scope="col"><h4 style="color:#008B8B;"><span t-esc="data['partner_id']" /></h4></th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                        </div>
+                    </div>
+                    <table class="table table-borderd">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Doc No.</th>
+                                <th>Account</th>
+                                <th>Description</th>
+                                <th>Debit</th>
+                                <th>Credit</th>
+                                <th>Balance</th>
+                                <th>Am currency</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <tr t-foreach="record" t-as="rec">
+                                <td><span t-esc="rec['date']" /></td>
+                                <td><span t-esc="rec['doc_no']" /></td>
+                                <td><span t-esc="rec['gl_account']" /></td>
+                                <td><span t-esc="rec['ref']" /></td>
+                                <td><span t-esc="rec['debit']" /></td>
+                                <td><span t-esc="rec['credit']" /></td>
+                            </tr> -->
+                            <t t-set="rb" t-value="0"/>
+                                 <tr t-foreach="openbal" t-as="o" style="border-bottom:1px solid #000;">
+                                     <td colspan="6" class="text-left"><h4>Opening Balance</h4></td>
+                                     <td><span t-esc="o['opening_bal']"/></td>
+
+                                     <t t-if="o['opening_bal']">
+                                         <t t-set="rb" t-value="rb + o['opening_bal']"/>
+                                     </t>
+                                 </tr>
+                                 <tr t-foreach="record" t-as="d" style="border-bottom:1px solid #000;">
+                                     <t t-set="rb" t-value="rb + d['debit'] - d['credit'] "/>
+                                     <td><span t-esc="d['date']" t-options="{'widget': 'date'}" /></td>
+                                     <td><span t-esc="d['doc_no']"/></td>
+                                     <td><span t-esc="d['gl_account']"/></td>
+                                     <td><span t-esc="d['line_desc']"/></td>
+                                     <td><t t-esc="'{0:,.2f}'.format(int(d['debit']))" /></td>
+                                     <td><t t-esc="'{0:,.2f}'.format(int(d['credit']))" /></td>
+                                     <td><t t-esc="'{0:,.2f}'.format(int(rb))" /></td>
+                                     <td><span t-esc="d['amount_currency']" 
+                                     t-options="{'widget': 'monetary', 'display_currency': m.currency_id}"/></td>
+
+                                 </tr>
+                                 <tr style="border-top:1px solid #000;">
+                                     <td colspan="6" class="text-left" style="font-style:#bold;"><h4>Closing Balance</h4></td>
+                                     <td><t t-esc="'{0:,.2f}'.format(int(rb))" /></td>
+
+                                 </tr>
+                        </tbody>
+                    </table>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

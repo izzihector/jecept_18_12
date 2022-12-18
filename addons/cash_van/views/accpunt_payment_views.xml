@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="account_payment_view_form_inh" model="ir.ui.view">
+            <field name="name">account.payment.view.form.inherit</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"/>
+            <field name="arch" type="xml">
+                <sheet position="inside">
+                    <notebook>
+                        <field name="is_cheque" invisible="1"/>
+                        <page string="Cheque Info." attrs="{'invisible': [('is_cheque', '!=', True)]}">
+                        <group>
+                            <field name="cheque_number" readonly="1" attrs="{'invisible': [('is_cheque', '!=', True)]}"/>
+                            <field name="cheque_bank" readonly="1" attrs="{'invisible': [('is_cheque', '!=', True)]}"/>
+                            <field name="cheque_date" readonly="1" attrs="{'invisible': [('is_cheque', '!=', True)]}"/>
+                            <field name="cheque_image" widget="image" attrs="{'invisible': [('is_cheque', '!=', True)]}"/>
+                        </group>
+                        </page>
+                    </notebook>  
+                </sheet>
+            </field>
+        </record>
+
+    </data>
+</odoo>

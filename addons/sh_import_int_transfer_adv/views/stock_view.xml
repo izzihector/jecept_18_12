@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- INVENTORY SIDE MENU -->
+        <menuitem
+            id="sh_import_int_transfer_adv_menu"
+            name="Import Internal Transfer Advance"
+            action="sh_import_int_transfer_adv_action"
+            groups="sh_import_int_transfer_adv.sh_import_int_transfer_adv_group"
+            parent="stock.menu_stock_warehouse_mgmt"
+            sequence="11"
+        />
+    </data>
+</odoo>

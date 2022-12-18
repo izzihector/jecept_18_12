@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	
+    <template id="report_stockvalutioninfo">
+        <t t-call="web.html_container">
+            <t t-call="web.basic_layout">
+                <t t-if ="'warehouse_ids' in data">
+                    <t t-foreach="data.get('warehouse_ids')" t-as="warehouse">
+                        <div class="page">
+                            <div class="oe_structure"/> 
+                            <table width="100%" style="font-size:21px;border-style: none;margin-bottom:15px;">
+                                <tr style="border-style: none;">
+                                    <td style="border-style: none;">
+                                        <center><strong>Inventory And Stock Valuation Report</strong></center>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table width="100%" style="font-size:13px;margin-bottom:15px;">
+                                <tr width="100%" style="font-size:13px;font-family: 'Times New Roman', Times, serif;">
+                                    <td width="33%" style="background:#e6e6e6;color:#000000;font-weight:bold;min-height:30px;line-height:20px;font-size:13px;border: 1px solid black;">
+                                        <center>
+                                            Warehouse
+                                        </center>
+                                    </td>
+                                    <td width="33%" style="background:#e6e6e6;color:#000000;font-weight:bold;min-height:30px;line-height:20px;font-size:13px;border: 1px solid black;">
+                                    </td>
+                                    <td width="34%" style="background:#e6e6e6;color:#000000;font-weight:bold;min-height:30px;line-height:20px;font-size:13px;border: 1px solid black;">
+                                        <center>
+                                            <span t-esc="warehouse.name" />
+                                        </center>
+                                    </td>
+                                </tr>
+                                <tr width="100%" style="font-size:13px;font-family: 'Times New Roman', Times, serif;">
+                                    <td width="33%" style="background:#e6e6e6;color:#000000;font-weight:bold;min-height:30px;line-height:20px;font-size:13px;border: 1px solid black;">
+                                        <center>
+                                            Company:
+                                        </center>
+                                    </td>
+                                    <td width="33%" style="background:#e6e6e6;color:#000000;font-weight:bold;min-height:30px;line-height:20px;font-size:13px;border: 1px solid black;">
+                                        <center>
+                                            Start Date:
+                                        </center>
+                                    </td>
+                                    <td width="34%" style="background:#e6e6e6;color:#000000;font-weight:bold;min-height:30px;line-height:20px;font-size:13px;border: 1px solid black;">
+                                        <center>
+                                            End Date:
+                                        </center>
+                                    </td>
+                                </tr>
+                                <tr width="100%" style="font-size:13px;font-family: 'Times New Roman', Times, serif;">
+                                    <td width="33%" style="font-weight:bold;min-height:30px;line-height:20px;font-size:13px;border: 1px solid black;">
+                                        <center>
+                                            <span t-esc="data.get('company_id').name" /> 
+                                        </center>
+                                    </td>
+                                    <td width="33%" style="font-weight:bold;min-height:30px;line-height:20px;font-size:13px;border: 1px solid black;">
+                                        <center>
+                                            <span t-esc="data.get('date_from')" /> 
+                                        </center>
+                                    </td>
+                                    <td width="34%" style="font-weight:bold;min-height:30px;line-height:20px;font-size:13px;border: 1px solid black;">
+                                        <center>
+                                            <span t-esc="data.get('date_to')" /> 
+                                        </center>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table width="100%" style="font-size:13px;">
+                                <tr style="min-height:30px;line-height:20px;font-size:13px;" width="100%">
+                                    <td style="padding-left:5px;border: 1px solid black;font-weight:bold;">
+                                        <center>
+                                            Code
+                                        </center>
+                                    </td>
+                                    <td style="padding-left:5px;border: 1px solid black;font-weight:bold;">
+                                        <center>
+                                            Product Name
+                                        </center>
+                                    </td>
+                                    <td style="padding-left:5px;border: 1px solid black;font-weight:bold;">
+                                        <center>
+                                            Product Category
+                                        </center>
+                                    </td>
+                                    <td style="padding-left:5px;border: 1px solid black;font-weight:bold;">
+                                        <center>
+                                            Costing Method
+                                        </center>
+                                    </td>
+                                    <td style="padding-left:5px;border: 1px solid black;font-weight:bold;">
+                                        <center>
+                                            Cost Price
+                                        </center>
+                                    </td>
+                                    <td style="padding-left:5px;border: 1px solid black;font-weight:bold;">
+                                        <center>
+                                            Current Stock
+                                        </center>
+                                    </td>
+                                    <td style="padding-left:5px;border: 1px solid black;font-weight:bold;">
+                                        <center>
+                                            Incoming Stock
+                                        </center>
+                                    </td>
+                                    <td style="padding-left:5px;border: 1px solid black;font-weight:bold;">
+                                        <center>
+                                            Outgoing Stock
+                                        </center>
+                                    </td>
+                                    <td style="padding-left:5px;border: 1px solid black;font-weight:bold;">
+                                        <center>
+                                            Internal Stock
+                                        </center>
+                                    </td>
+                                    <td style="padding-left:5px;border: 1px solid black;font-weight:bold;">
+                                        <center>
+                                            Adjustment Stock
+                                        </center>
+                                    </td>
+                                    <td style="padding-left:5px;border: 1px solid black;font-weight:bold;">
+                                        <center>
+                                            Ending Stock
+                                        </center>
+                                    </td>
+                                    <td style="padding-left:5px;border: 1px solid black;font-weight:bold;">
+                                        <center>
+                                            Stock Valuation
+                                        </center>
+                                    </td>
+                                </tr>
+                                <t t-foreach="get_warehouse_details(data, warehouse)" t-as="records">
+                                    <tr style="font-size:13px;" t-foreach="records.get('product_data')" t-as="record">
+                                        <td style="padding-left:5px;border: 1px solid black;text-align:left;">
+                                            <t t-esc="record.get('product_code')"/>
+                                        </td>
+                                        <td style="padding-left:5px;border: 1px solid black;text-align:left;">
+                                            <t t-esc="record.get('product_name')"/>
+                                        </td>
+                                        <td style="padding-left:5px;border: 1px solid black;text-align:left;">
+                                            <t t-esc="record.get('product_category')"/>
+                                        </td>
+                                        <td style="padding-left:5px;border: 1px solid black;text-align:left;">
+                                            <t t-esc="record.get('costing_method')"/>
+                                        </td>
+                                        <td style="padding-left:5px;border: 1px solid black;text-align:left;">
+                                            <center>
+                                                <t t-esc="'%.2f'% record.get('cost_price') or 0.00"/>
+                                            </center>
+                                        </td>
+                                        <td style="padding-left:5px;border: 1px solid black;text-align:left;">
+                                            <center>
+                                                <t t-esc="'%.2f'% record.get('current_stock') or 0.00"/>
+                                            </center>
+                                        </td>
+                                        <td style="padding-left:5px;border: 1px solid black;text-align:left;">
+                                            <center>
+                                                <t t-esc="'%.2f'% record.get('incoming_qty_total') or 0.00"/>
+                                            </center>
+                                        </td>
+                                        <td style="padding-left:5px;border: 1px solid black;text-align:left;">
+                                            <center>
+                                                <t t-esc="'%.2f'% record.get('outgoing_qty_total') or 0.00"/>
+                                            </center>
+                                        </td>
+                                        <td style="padding-left:5px;border: 1px solid black;text-align:left;">
+                                            <center>
+                                                <t t-esc="'%.2f'% record.get('internal_qty_total') or 0.00"/>
+                                            </center>
+                                        </td>
+                                        <td style="padding-left:5px;border: 1px solid black;text-align:left;">
+                                            <center>
+                                                <t t-esc="'%.2f'% record.get('inventory_qty_total') or 0.00"/>
+                                            </center>
+                                        </td>
+                                        <td style="padding-left:5px;border: 1px solid black;text-align:left;">
+                                            <center>
+                                                <t t-esc="'%.2f'% record.get('ending_stock') or 0.00"/>
+                                            </center>
+                                        </td>
+                                        <td style="padding-left:5px;border: 1px solid black;text-align:left;">
+                                            <center>
+                                                <t t-esc="'%.2f'% record.get('total_value') or 0.00"/>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </table>
+                        </div>
+                        <div style="page-break-before:always;"/>
+                    </t>
+                </t>
+                <!-- Location -->
+                <t t-if ="'location_ids' in data">
+                    <t t-foreach="data.get('location_ids')" t-as="location">
+                        <div class="page">
+                            <div class="oe_structure"/> 
+                            <table width="100%" style="font-size:21px;border-style: none;margin-bottom:15px;">
+                                <tr style="border-style: none;">
+                                    <td style="border-style: none;">
+                                        <center><strong>Inventory And Stock Valuation Report</strong></center>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table width="100%" style="font-size:13px;margin-bottom:15px;">
+                                <tr width="100%" style="font-size:13px;font-family: 'Times New Roman', Times, serif;">
+                                    <td width="33%" style="background:#e6e6e6;color:#000000;font-weight:bold;min-height:30px;line-height:20px;font-size:13px;border: 1px solid black;">
+                                        <center>
+                                            Location
+                                        </center>
+                                    </td>
+                                    <td width="33%" style="background:#e6e6e6;color:#000000;font-weight:bold;min-height:30px;line-height:20px;font-size:13px;border: 1px solid black;">
+                                    </td>
+                                    <td width="34%" style="background:#e6e6e6;color:#000000;font-weight:bold;min-height:30px;line-height:20px;font-size:13px;border: 1px solid black;">
+                                        <center>
+                                            <t t-set="locations" t-value="location.name"/>
+                                            <t t-set="parent_locations" t-value="location.location_id.name"/>
+                                            <t t-if="parent_locations">
+                                                <span t-esc="parent_locations" />
+                                                /
+                                            </t>
+                                            <span t-esc="locations" />
+                                        </center>
+                                    </td>
+                                </tr>
+                                <tr width="100%" style="font-size:13px;font-family: 'Times New Roman', Times, serif;">
+                                    <td width="33%" style="background:#e6e6e6;color:#000000;font-weight:bold;min-height:30px;line-height:20px;font-size:13px;border: 1px solid black;">
+                                        <center>
+                                            Company:
+                                        </center>
+                                    </td>
+                                    <td width="33%" style="background:#e6e6e6;color:#000000;font-weight:bold;min-height:30px;line-height:20px;font-size:13px;border: 1px solid black;">
+                                        <center>
+                                            Start Date:
+                                        </center>
+                                    </td>
+                                    <td width="34%" style="background:#e6e6e6;color:#000000;font-weight:bold;min-height:30px;line-height:20px;font-size:13px;border: 1px solid black;">
+                                        <center>
+                                            End Date:
+                                        </center>
+                                    </td>
+                                </tr>
+                                <tr width="100%" style="font-size:13px;font-family: 'Times New Roman', Times, serif;">
+                                    <td width="33%" style="font-weight:bold;min-height:30px;line-height:20px;font-size:13px;border: 1px solid black;">
+                                        <center>
+                                            <span t-esc="data.get('company_id').name" /> 
+                                        </center>
+                                    </td>
+                                    <td width="33%" style="font-weight:bold;min-height:30px;line-height:20px;font-size:13px;border: 1px solid black;">
+                                        <center>
+                                            <span t-esc="data.get('date_from')" /> 
+                                        </center>
+                                    </td>
+                                    <td width="34%" style="font-weight:bold;min-height:30px;line-height:20px;font-size:13px;border: 1px solid black;">
+                                        <center>
+                                            <span t-esc="data.get('date_to')" /> 
+                                        </center>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table width="100%" style="font-size:13px;">
+                                <tr style="min-height:30px;line-height:20px;font-size:13px;" width="100%">
+                                    <td style="padding-left:5px;border: 1px solid black;font-weight:bold;">
+                                        <center>
+                                            Code
+                                        </center>
+                                    </td>
+                                    <td style="padding-left:5px;border: 1px solid black;font-weight:bold;">
+                                        <center>
+                                            Product Name
+                                        </center>
+                                    </td>
+                                    <td style="padding-left:5px;border: 1px solid black;font-weight:bold;">
+                                        <center>
+                                            Product Category
+                                        </center>
+                                    </td>
+                                    <td style="padding-left:5px;border: 1px solid black;font-weight:bold;">
+                                        <center>
+                                            Costing Method
+                                        </center>
+                                    </td>
+                                    <td style="padding-left:5px;border: 1px solid black;font-weight:bold;">
+                                        <center>
+                                            Cost Price
+                                        </center>
+                                    </td>
+                                    <td style="padding-left:5px;border: 1px solid black;font-weight:bold;">
+                                        <center>
+                                            Current Stock
+                                        </center>
+                                    </td>
+                                    <td style="padding-left:5px;border: 1px solid black;font-weight:bold;">
+                                        <center>
+                                            Incoming Stock
+                                        </center>
+                                    </td>
+                                    <td style="padding-left:5px;border: 1px solid black;font-weight:bold;">
+                                        <center>
+                                            Outgoing Stock
+                                        </center>
+                                    </td>
+                                    <td style="padding-left:5px;border: 1px solid black;font-weight:bold;">
+                                        <center>
+                                            Internal Stock
+                                        </center>
+                                    </td>
+                                    <td style="padding-left:5px;border: 1px solid black;font-weight:bold;">
+                                        <center>
+                                            Adjustment Stock
+                                        </center>
+                                    </td>
+                                    <td style="padding-left:5px;border: 1px solid black;font-weight:bold;">
+                                        <center>
+                                            Ending Stock
+                                        </center>
+                                    </td>
+                                    <td style="padding-left:5px;border: 1px solid black;font-weight:bold;">
+                                        <center>
+                                            Stock Valuation
+                                        </center>
+                                    </td>
+                                </tr>
+                                <t t-foreach="get_location_details(data, location)" t-as="records">
+                                    <tr style="font-size:13px;" t-foreach="records.get('product_data')" t-as="record">
+                                        <td style="padding-left:5px;border: 1px solid black;text-align:left;">
+                                            <t t-esc="record.get('product_code')"/>
+                                        </td>
+                                        <td style="padding-left:5px;border: 1px solid black;text-align:left;">
+                                            <t t-esc="record.get('product_name')"/>
+                                        </td>
+                                        <td style="padding-left:5px;border: 1px solid black;text-align:left;">
+                                            <t t-esc="record.get('product_category')"/>
+                                        </td>
+                                        <td style="padding-left:5px;border: 1px solid black;text-align:left;">
+                                            <t t-esc="record.get('costing_method')"/>
+                                        </td>
+                                        <td style="padding-left:5px;border: 1px solid black;text-align:left;">
+                                            <center>
+                                                <t t-esc="'%.2f'% record.get('cost_price') or 0.00"/>
+                                            </center>
+                                        </td>
+                                        <td style="padding-left:5px;border: 1px solid black;text-align:left;">
+                                            <center>
+                                                <t t-esc="'%.2f'% record.get('current_stock') or 0.00"/>
+                                            </center>
+                                        </td>
+                                        <td style="padding-left:5px;border: 1px solid black;text-align:left;">
+                                            <center>
+                                                <t t-esc="'%.2f'% record.get('incoming_qty_total') or 0.00"/>
+                                            </center>
+                                        </td>
+                                        <td style="padding-left:5px;border: 1px solid black;text-align:left;">
+                                            <center>
+                                                <t t-esc="'%.2f'% record.get('outgoing_qty_total') or 0.00"/>
+                                            </center>
+                                        </td>
+                                        <td style="padding-left:5px;border: 1px solid black;text-align:left;">
+                                            <center>
+                                                <t t-esc="'%.2f'% record.get('internal_qty_total') or 0.00"/>
+                                            </center>
+                                        </td>
+                                        <td style="padding-left:5px;border: 1px solid black;text-align:left;">
+                                            <center>
+                                                <t t-esc="'%.2f'% record.get('inventory_qty_total') or 0.00"/>
+                                            </center>
+                                        </td>
+                                        <td style="padding-left:5px;border: 1px solid black;text-align:left;">
+                                            <center>
+                                                <t t-esc="'%.2f'% record.get('ending_stock') or 0.00"/>
+                                            </center>
+                                        </td>
+                                        <td style="padding-left:5px;border: 1px solid black;text-align:left;">
+                                            <center>
+                                                <t t-esc="'%.2f'% record.get('total_value') or 0.00"/>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </table>
+                        </div>
+                        <div style="page-break-before:always;"/>
+                    </t>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

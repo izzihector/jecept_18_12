@@ -1,0 +1,146 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* selling_by_category_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-08 13:40+0000\n"
+"PO-Revision-Date: 2022-12-08 13:40+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: selling_by_category_report
+#: model_terms:ir.ui.view,arch_db:selling_by_category_report.selling_by_category_report
+msgid "<b style=\"margin-right: 10px;\">Category:</b>"
+msgstr "<b style=\"margin-right: 10px;\">اسم المجموعة:</b>"
+
+#. module: selling_by_category_report
+#: model_terms:ir.ui.view,arch_db:selling_by_category_report.selling_by_category_report
+msgid "<b style=\"margin-right: 10px;\">From Date:</b>"
+msgstr "<b style=\"margin-right: 10px;\">من تاريخ:</b>"
+
+#. module: selling_by_category_report
+#: model_terms:ir.ui.view,arch_db:selling_by_category_report.selling_by_category_report
+msgid "<b style=\"margin-right: 10px;\">To Date:</b>"
+msgstr "<b style=\"margin-right: 10px;\">الى تاريخ:</b>"
+
+#. module: selling_by_category_report
+#: model_terms:ir.ui.view,arch_db:selling_by_category_report.selling_by_category_report
+msgid "<b>Date:</b>"
+msgstr "<b>التاريخ:</b>"
+
+#. module: selling_by_category_report
+#: model_terms:ir.ui.view,arch_db:selling_by_category_report.selling_by_category_report
+msgid "<b>Time:</b>"
+msgstr "<b>الوقت:</b>"
+
+#. module: selling_by_category_report
+#: model_terms:ir.ui.view,arch_db:selling_by_category_report.selling_by_category_report
+msgid "<span style=\"font-weight: bold;\">Total</span>"
+msgstr "<span style=\"font-weight: bold;\">المجموع</span>"
+
+#. module: selling_by_category_report
+#: model_terms:ir.ui.view,arch_db:selling_by_category_report.form_selling_by_category_wizard
+msgid "Cancel"
+msgstr "ألغاء"
+
+#. module: selling_by_category_report
+#: model_terms:ir.ui.view,arch_db:selling_by_category_report.selling_by_category_report
+msgid "Category"
+msgstr "المجموعة"
+
+#. module: selling_by_category_report
+#: model:ir.model.fields,field_description:selling_by_category_report.field_selling_by_category_wizard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: selling_by_category_report
+#: model:ir.model.fields,field_description:selling_by_category_report.field_selling_by_category_wizard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: selling_by_category_report
+#: model:ir.model.fields,field_description:selling_by_category_report.field_selling_by_category_wizard__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: selling_by_category_report
+#: code:addons/selling_by_category_report/wizard/selling_by_category_wizard.py:0
+#, python-format
+msgid "End date should be after start date"
+msgstr "تاريخ الانتهاء يجب ان يكون بعد تاريخ البداية"
+
+#. module: selling_by_category_report
+#: model:ir.model.fields,field_description:selling_by_category_report.field_selling_by_category_wizard__from_date
+msgid "From Date"
+msgstr "من تاريخ"
+
+#. module: selling_by_category_report
+#: model:ir.model.fields,field_description:selling_by_category_report.field_selling_by_category_wizard__id
+msgid "ID"
+msgstr ""
+
+#. module: selling_by_category_report
+#: model:ir.model.fields,field_description:selling_by_category_report.field_selling_by_category_wizard____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: selling_by_category_report
+#: model:ir.model.fields,field_description:selling_by_category_report.field_selling_by_category_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: selling_by_category_report
+#: model:ir.model.fields,field_description:selling_by_category_report.field_selling_by_category_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: selling_by_category_report
+#: model_terms:ir.ui.view,arch_db:selling_by_category_report.form_selling_by_category_wizard
+msgid "Print"
+msgstr "طباعة"
+
+#. module: selling_by_category_report
+#: model:ir.model.fields,field_description:selling_by_category_report.field_selling_by_category_wizard__category_ids
+msgid "Product Category"
+msgstr "مجموعة المنتج"
+
+#. module: selling_by_category_report
+#: model_terms:ir.ui.view,arch_db:selling_by_category_report.selling_by_category_report
+msgid "Quantity"
+msgstr "الكمية"
+
+#. module: selling_by_category_report
+#: model:ir.actions.act_window,name:selling_by_category_report.action_selling_by_category
+#: model:ir.actions.report,name:selling_by_category_report.action_selling_by_category_report
+#: model:ir.model,name:selling_by_category_report.model_selling_by_category_wizard
+#: model:ir.ui.menu,name:selling_by_category_report.menu_selling_by_category
+#: model_terms:ir.ui.view,arch_db:selling_by_category_report.selling_by_category_report
+msgid "Selling By Category"
+msgstr "حركة مادة حسب مجموعة"
+
+#. module: selling_by_category_report
+#: model:ir.model.fields,field_description:selling_by_category_report.field_selling_by_category_wizard__to_date
+msgid "To Date"
+msgstr "الى تاريخ"
+
+#. module: selling_by_category_report
+#: model_terms:ir.ui.view,arch_db:selling_by_category_report.form_selling_by_category_wizard
+msgid "Wizard"
+msgstr ""
+
+#. module: selling_by_category_report
+#: model_terms:ir.ui.view,arch_db:selling_by_category_report.selling_by_category_report
+msgid "total sales With Tax"
+msgstr "مجموع المبيعات مع ضريبة"
+
+#. module: selling_by_category_report
+#: model_terms:ir.ui.view,arch_db:selling_by_category_report.selling_by_category_report
+msgid "total sales Without Tax"
+msgstr "مجموع المبيعات بدون ضريبة"

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+	
+	<!-- CUSTOMER / VENDOR -->	
+
+	<!-- Company to Customer Email Notification-->
+    <record id="sh_pdc_company_to_customer_notification_1" model="mail.template">
+        <field name="name">Due Notification From Company To Customer</field>
+        <field name="model_id" ref="sh_pdc.model_pdc_wizard"/>
+        <field name="use_default_to" eval="True" />
+        <field name="email_from">${(object.company_id.email) | safe}</field>
+        <field name="email_to">${(object.partner_id.email) | safe}</field>
+        <field name="lang">${object.env.context.get("lang")}</field>
+        <field name="subject">Gentle Remainder</field>
+        <field name="body_html" type="html">
+            <div style="line-height: 28px;">
+            Dear <b>${object.partner_id.name}</b>,<br/>
+            This is a gentle remainder that your cheque reference no.<b>${object.reference}</b> due on <b>${object.due_date}</b>.<br/>
+	        <div>Thank you...</div>
+            </div>
+        </field>
+    </record>
+    
+    
+    <!-- Company to Internal User Email Notification-->
+    <record id="sh_pdc_company_to_int_user_notification_1" model="mail.template">
+        <field name="name">Due Notification From Company To Internal User Customer</field>
+        <field name="model_id" ref="sh_pdc.model_pdc_wizard"/>
+        <field name="email_from">${(object.company_id.email) | safe}</field>
+        <field name="lang">${object.env.context.get("lang")}</field>
+        <field name="subject">Gentle Remainder</field>
+        <field name="body_html" type="html">
+            <div style="line-height: 28px;">
+            Hello,<br/>
+            <b>${object.partner_id.name}</b><b>'s</b> cheuqe reference no.<b>${object.reference}</b> due on <b>${object.due_date}</b>.<br/>
+            <a class="btn btn-primary" role="button" href="${object.env.context.get('customer_url')}">View Cheque</a><br />
+            <div>Thank you...</div>
+            </div>
+        </field>
+    </record>
+    
+    
+</odoo>

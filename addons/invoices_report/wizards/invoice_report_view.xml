@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="invoice_report_form" model="ir.ui.view">
+            <field name="name">Invoices Report</field>
+            <field name="model">invoice.report</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group col="4" class="mt-0 pt-0">
+                        <div role="alert" class="alert alert-info mt-0 text-center" colspan="4">
+                            You can <b>filter</b> by Partners or States (Not Both!).
+                        </div>
+                        <field name="target" widget="radio" options="{'horizontal': 0}" colspan="2"/>
+                        <label for="sort_by"/>
+                        <div>
+                            <field name="sort_by" widget="radio" class="oe_inline"/>
+                            <field name="sort_type" widget="radio" class="oe_inline ml-5 mr-5"/>
+                        </div>
+
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                        <br colspan="4"/>
+                        <field name="partner_ids" widget="many2many_tags"/>
+                        <field name="state_ids" widget="many2many_tags"/>
+                        <field name="property_account_position_ids" widget="many2many_tags"/>
+                        <field name="industry_ids" widget="many2many_tags"/>
+                    </group>
+                    <footer>
+                        <button name="action_view_report" string="View Report" type="object" class="oe_highlight"/>
+                        <button name="action_print" string="Print PDF" type="object" class="oe_highlight"/>
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_open_invoice_report_wizard_form" model="ir.actions.act_window">
+            <field name="name">Invoices Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">invoice.report</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" eval="invoice_report_form"/>
+        </record>
+
+
+        <menuitem id="menu_invoice_report_wizard" name="Invoices Report" parent="account.menu_finance_receivables"
+                  action="action_open_invoice_report_wizard_form" sequence="300"/>
+
+    </data>
+</odoo>

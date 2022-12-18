@@ -1,0 +1,152 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sh_import_int_transfer_adv
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-24 04:54+0000\n"
+"PO-Revision-Date: 2021-03-24 04:54+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sh_import_int_transfer_adv
+#: model_terms:ir.ui.view,arch_db:sh_import_int_transfer_adv.sh_import_int_transfer_adv_wizard
+msgid "<i class=\"fa fa-download\"/> CSV file"
+msgstr "<i class=\"fa fa-download\"/> Archivo CSV"
+
+#. module: sh_import_int_transfer_adv
+#: model_terms:ir.ui.view,arch_db:sh_import_int_transfer_adv.sh_import_int_transfer_adv_wizard
+msgid "<i class=\"fa fa-download\"/> Excel file"
+msgstr "<i class=\"fa fa-download\"/> archivo Excel"
+
+#. module: sh_import_int_transfer_adv
+#: model_terms:ir.ui.view,arch_db:sh_import_int_transfer_adv.sh_import_int_transfer_adv_wizard
+msgid "<strong>Download Sample:</strong>"
+msgstr "<strong>Descargar muestra:</strong>"
+
+#. module: sh_import_int_transfer_adv
+#: model_terms:ir.ui.view,arch_db:sh_import_int_transfer_adv.sh_import_int_transfer_adv_wizard
+msgid "Apply"
+msgstr "Solicitar"
+
+#. module: sh_import_int_transfer_adv
+#: model:ir.model.fields.selection,name:sh_import_int_transfer_adv.selection__import_int_transfer_adv_wizard__product_by__barcode
+msgid "Barcode"
+msgstr "Código de barras"
+
+#. module: sh_import_int_transfer_adv
+#: model:ir.model.fields.selection,name:sh_import_int_transfer_adv.selection__import_int_transfer_adv_wizard__import_type__csv
+msgid "CSV File"
+msgstr "Archivo CSV"
+
+#. module: sh_import_int_transfer_adv
+#: model_terms:ir.ui.view,arch_db:sh_import_int_transfer_adv.sh_import_int_transfer_adv_wizard
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: sh_import_int_transfer_adv
+#: model:ir.model.fields,field_description:sh_import_int_transfer_adv.field_import_int_transfer_adv_wizard__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: sh_import_int_transfer_adv
+#: model:ir.model.fields,field_description:sh_import_int_transfer_adv.field_import_int_transfer_adv_wizard__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: sh_import_int_transfer_adv
+#: model:ir.model.fields,field_description:sh_import_int_transfer_adv.field_import_int_transfer_adv_wizard__display_name
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#. module: sh_import_int_transfer_adv
+#: model:ir.model.fields.selection,name:sh_import_int_transfer_adv.selection__import_int_transfer_adv_wizard__import_type__excel
+msgid "Excel File"
+msgstr "Archivo Excel"
+
+#. module: sh_import_int_transfer_adv
+#: model:ir.model.fields,field_description:sh_import_int_transfer_adv.field_import_int_transfer_adv_wizard__file
+msgid "File"
+msgstr "Expediente"
+
+#. module: sh_import_int_transfer_adv
+#: model:ir.model.fields,field_description:sh_import_int_transfer_adv.field_import_int_transfer_adv_wizard__id
+msgid "ID"
+msgstr "IDENTIFICACIÓN"
+
+#. module: sh_import_int_transfer_adv
+#: model:ir.model.fields,field_description:sh_import_int_transfer_adv.field_import_int_transfer_adv_wizard__import_type
+msgid "Import File Type"
+msgstr "Importar tipo de archivo"
+
+#. module: sh_import_int_transfer_adv
+#: model:ir.actions.act_window,name:sh_import_int_transfer_adv.sh_import_int_transfer_adv_action
+#: model:ir.ui.menu,name:sh_import_int_transfer_adv.sh_import_int_transfer_adv_menu
+#: model_terms:ir.ui.view,arch_db:sh_import_int_transfer_adv.sh_import_int_transfer_adv_wizard
+#: model:res.groups,name:sh_import_int_transfer_adv.sh_import_int_transfer_adv_group
+msgid "Import Internal Transfer Advance"
+msgstr "Importar anticipo de transferencia interna"
+
+#. module: sh_import_int_transfer_adv
+#: model:ir.model,name:sh_import_int_transfer_adv.model_import_int_transfer_adv_wizard
+msgid "Import Internal Transfer Advance Wizard"
+msgstr "Importar asistente de avance de transferencia interna"
+
+#. module: sh_import_int_transfer_adv
+#: model:ir.model.fields.selection,name:sh_import_int_transfer_adv.selection__import_int_transfer_adv_wizard__product_by__int_ref
+msgid "Internal Reference"
+msgstr "Referencia interna"
+
+#. module: sh_import_int_transfer_adv
+#: model:ir.model.fields,field_description:sh_import_int_transfer_adv.field_import_int_transfer_adv_wizard____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: sh_import_int_transfer_adv
+#: model:ir.model.fields,field_description:sh_import_int_transfer_adv.field_import_int_transfer_adv_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Actualizado por última vez por"
+
+#. module: sh_import_int_transfer_adv
+#: model:ir.model.fields,field_description:sh_import_int_transfer_adv.field_import_int_transfer_adv_wizard__write_date
+msgid "Last Updated on"
+msgstr "Ultima actualización en"
+
+#. module: sh_import_int_transfer_adv
+#: model:ir.model.fields.selection,name:sh_import_int_transfer_adv.selection__import_int_transfer_adv_wizard__product_by__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: sh_import_int_transfer_adv
+#: model:ir.model.fields,field_description:sh_import_int_transfer_adv.field_import_int_transfer_adv_wizard__product_by
+msgid "Product By"
+msgstr "Producto por"
+
+#. module: sh_import_int_transfer_adv
+#: model:ir.model.fields,field_description:sh_import_int_transfer_adv.field_import_int_transfer_adv_wizard__scheduled_date
+msgid "Scheduled Date"
+msgstr "Cita agendada"
+
+#. module: sh_import_int_transfer_adv
+#: code:addons/sh_import_int_transfer_adv/wizard/import_int_transfer_wizard.py:0
+#, python-format
+msgid "Sorry, Your csv file does not match with our format "
+msgstr "Lo sentimos, su archivo csv no coincide con nuestro formato"
+
+#. module: sh_import_int_transfer_adv
+#: code:addons/sh_import_int_transfer_adv/wizard/import_int_transfer_wizard.py:0
+#, python-format
+msgid "Sorry, Your excel file does not match with our format "
+msgstr "Lo sentimos, su archivo de Excel no coincide con nuestro formato"
+
+#. module: sh_import_int_transfer_adv
+#: code:addons/sh_import_int_transfer_adv/wizard/import_int_transfer_wizard.py:0
+#, python-format
+msgid "You must define a warehouse for the company: %s."
+msgstr "Debe definir un almacén para la empresa:% s."

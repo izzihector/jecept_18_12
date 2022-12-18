@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="form_view_non_moving_stock_wizard">
+            <field name="name">Non Moving Stock</field>
+            <field name="model">non.moving.stock.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Wizard">
+                    <group>
+                        <field name="from_date"/>
+                        <field name="to_date"/>
+                    </group>
+                    <footer>
+                        <button type="object" name="print_report" string="Print" class="btn btn-primary"/>
+                        <button type="object" special="cancel" string="Cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_non_moving_stock" model="ir.actions.act_window">
+            <field name="name">Non Moving Stock</field>
+            <field name="res_model">non.moving.stock.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="form_view_non_moving_stock_wizard"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_non_moving_stock" parent="stock.menu_warehouse_report" name="Non Moving Stock"
+                  action="action_non_moving_stock" sequence="151"/>
+
+    </data>
+</odoo>

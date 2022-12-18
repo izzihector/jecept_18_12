@@ -1,0 +1,134 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* non_moving_stock
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-11-27 15:30+0000\n"
+"PO-Revision-Date: 2022-11-27 15:30+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: non_moving_stock
+#: model_terms:ir.ui.view,arch_db:non_moving_stock.non_moving_stock_report
+msgid "<b style=\"margin-right: 10px;\">From Date:</b>"
+msgstr "<b style=\"margin-right: 10px;\">من تاريخ:</b>"
+
+#. module: non_moving_stock
+#: model_terms:ir.ui.view,arch_db:non_moving_stock.non_moving_stock_report
+msgid "<b style=\"margin-right: 10px;\">To Date:</b>"
+msgstr "<b style=\"margin-right: 10px;\">الى تاريخ:</b>"
+
+#. module: non_moving_stock
+#: model_terms:ir.ui.view,arch_db:non_moving_stock.non_moving_stock_report
+msgid "<b>Date:</b>"
+msgstr "<b>التاريخ:</b>"
+
+#. module: non_moving_stock
+#: model_terms:ir.ui.view,arch_db:non_moving_stock.non_moving_stock_report
+msgid "<b>Time:</b>"
+msgstr "<b>الوقت:</b>"
+
+#. module: non_moving_stock
+#: model_terms:ir.ui.view,arch_db:non_moving_stock.form_view_non_moving_stock_wizard
+msgid "Cancel"
+msgstr "الغاء"
+
+#. module: non_moving_stock
+#: model:ir.model.fields,field_description:non_moving_stock.field_non_moving_stock_wizard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: non_moving_stock
+#: model:ir.model.fields,field_description:non_moving_stock.field_non_moving_stock_wizard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: non_moving_stock
+#: model:ir.model.fields,field_description:non_moving_stock.field_non_moving_stock_wizard__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: net_product_movement_report
+#: code:addons/net_product_movement_report/wizard/net_product_movement_wizard.py:0
+#, python-format
+msgid "End date should be after start date"
+msgstr "تاريخ الانتهاء يجب ان يكون بعد تاريخ البداية"
+
+#. module: non_moving_stock
+#: model:ir.model.fields,field_description:non_moving_stock.field_non_moving_stock_wizard__from_date
+msgid "From Date"
+msgstr "من تاريخ"
+
+#. module: non_moving_stock
+#: model:ir.model.fields,field_description:non_moving_stock.field_non_moving_stock_wizard__id
+msgid "ID"
+msgstr ""
+
+#. module: non_moving_stock
+#: model_terms:ir.ui.view,arch_db:non_moving_stock.non_moving_stock_report
+msgid "Internal Reference"
+msgstr "رمز المادة"
+
+#. module: non_moving_stock
+#: model:ir.model.fields,field_description:non_moving_stock.field_non_moving_stock_wizard____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: non_moving_stock
+#: model:ir.model.fields,field_description:non_moving_stock.field_non_moving_stock_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: non_moving_stock
+#: model:ir.model.fields,field_description:non_moving_stock.field_non_moving_stock_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: non_moving_stock
+#: model:ir.actions.act_window,name:non_moving_stock.action_non_moving_stock
+#: model:ir.actions.report,name:non_moving_stock.action_non_moving_stock_report
+#: model:ir.ui.menu,name:non_moving_stock.menu_non_moving_stock
+msgid "Non Moving Stock"
+msgstr "تقرير المواد غير المتحركة"
+
+#. module: non_moving_stock
+#: model:ir.model,name:non_moving_stock.model_non_moving_stock_wizard
+msgid "Non Moving Stock wizard"
+msgstr "تقرير المواد غير المتحركة"
+
+#. module: non_moving_stock
+#: model_terms:ir.ui.view,arch_db:non_moving_stock.non_moving_stock_report
+msgid "Non Moving Stock Report"
+msgstr "تقرير المواد غير المتحركة"
+
+#. module: non_moving_stock
+#: model_terms:ir.ui.view,arch_db:non_moving_stock.form_view_non_moving_stock_wizard
+msgid "Print"
+msgstr "طباعة"
+
+#. module: non_moving_stock
+#: model_terms:ir.ui.view,arch_db:non_moving_stock.non_moving_stock_report
+msgid "Product Name"
+msgstr "اسم المادة"
+
+#. module: non_moving_stock
+#: model:ir.model.fields,field_description:non_moving_stock.field_non_moving_stock_wizard__to_date
+msgid "To Date"
+msgstr "الى تاريخ"
+
+#. module: non_moving_stock
+#: model_terms:ir.ui.view,arch_db:non_moving_stock.form_view_non_moving_stock_wizard
+msgid "Wizard"
+msgstr ""
+
+#. module: non_moving_stock
+#: model:ir.actions.report,print_report_name:non_moving_stock.action_non_moving_stock_report
+msgid "dsssfs"
+msgstr ""

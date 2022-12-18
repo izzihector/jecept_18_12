@@ -1,0 +1,11 @@
+
+.o_account_reports_body_print {
+    .o_account_reports_table {
+        font-size: 15px !important;
+        > tbody > tr > td {
+            /* increase space */
+            padding: 5px !important;
+        }
+    }
+
+}
